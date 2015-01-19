@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     
     func makeQuestions(){
-        questions.append(Question(question:"What is my name?", answer:"Quinton Black",image_name:"quinton.black.jpg"));
+        questions.append(Question(question:"What is my name?", answer:"Quinton Black",image_name:"quinton_black.jpg"));
         
         questions.append(Question(question:"What is my favourite colour?",answer:"Blue",image_name:"blue-frog.jpg"));
         
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func showQuestion(sender: UIButton) {
+    @IBAction func ShowQuestion(sender: UIButton) {
         var question = questions[index];
         questionLabel.text = question.question;
         var nextImage = UIImage(named: question.image_name);
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         answerLabel.text="???";
         
         
-        index = (index+1)%questions.count;
+        index = (index+1) % questions.count;
         
     }
 

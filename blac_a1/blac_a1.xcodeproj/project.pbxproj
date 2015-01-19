@@ -13,9 +13,9 @@
 		8A6B69911A6D96400008D4A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B69901A6D96400008D4A0 /* Images.xcassets */; };
 		8A6B69941A6D96400008D4A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B69921A6D96400008D4A0 /* LaunchScreen.xib */; };
 		8A6B69A01A6D96400008D4A0 /* blac_a1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B699F1A6D96400008D4A0 /* blac_a1Tests.swift */; };
-		8A6B69AB1A6D99600008D4A0 /* quinton_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B69AA1A6D99600008D4A0 /* quinton_black.jpg */; };
-		8A6B69AE1A6D9CBC0008D4A0 /* blue-frog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B69AC1A6D9CBC0008D4A0 /* blue-frog.jpg */; };
-		8A6B69AF1A6D9CBC0008D4A0 /* wlulogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B69AD1A6D9CBC0008D4A0 /* wlulogo.jpg */; };
+		8A6B69B31A6DA6190008D4A0 /* blue-frog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B69B01A6DA6190008D4A0 /* blue-frog.jpg */; };
+		8A6B69B51A6DA6190008D4A0 /* quinton_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B69B21A6DA6190008D4A0 /* quinton_black.jpg */; };
+		8A6B69B71A6DA6530008D4A0 /* wlulogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B69B61A6DA6530008D4A0 /* wlulogo.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +39,9 @@
 		8A6B69991A6D96400008D4A0 /* blac_a1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = blac_a1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A6B699E1A6D96400008D4A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A6B699F1A6D96400008D4A0 /* blac_a1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blac_a1Tests.swift; sourceTree = "<group>"; };
-		8A6B69AA1A6D99600008D4A0 /* quinton_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = quinton_black.jpg; sourceTree = "<group>"; };
-		8A6B69AC1A6D9CBC0008D4A0 /* blue-frog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "blue-frog.jpg"; sourceTree = "<group>"; };
-		8A6B69AD1A6D9CBC0008D4A0 /* wlulogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wlulogo.jpg; sourceTree = "<group>"; };
+		8A6B69B01A6DA6190008D4A0 /* blue-frog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "blue-frog.jpg"; sourceTree = "<group>"; };
+		8A6B69B21A6DA6190008D4A0 /* quinton_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = quinton_black.jpg; sourceTree = "<group>"; };
+		8A6B69B61A6DA6530008D4A0 /* wlulogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wlulogo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +83,6 @@
 		8A6B69861A6D96400008D4A0 /* blac_a1 */ = {
 			isa = PBXGroup;
 			children = (
-				8A6B69A91A6D99600008D4A0 /* images */,
 				8A6B69891A6D96400008D4A0 /* AppDelegate.swift */,
 				8A6B698B1A6D96400008D4A0 /* ViewController.swift */,
 				8A6B698D1A6D96400008D4A0 /* Main.storyboard */,
@@ -97,6 +96,9 @@
 		8A6B69871A6D96400008D4A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8A6B69B61A6DA6530008D4A0 /* wlulogo.jpg */,
+				8A6B69B01A6DA6190008D4A0 /* blue-frog.jpg */,
+				8A6B69B21A6DA6190008D4A0 /* quinton_black.jpg */,
 				8A6B69881A6D96400008D4A0 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -117,16 +119,6 @@
 				8A6B699E1A6D96400008D4A0 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8A6B69A91A6D99600008D4A0 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				8A6B69AC1A6D9CBC0008D4A0 /* blue-frog.jpg */,
-				8A6B69AD1A6D9CBC0008D4A0 /* wlulogo.jpg */,
-				8A6B69AA1A6D99600008D4A0 /* quinton_black.jpg */,
-			);
-			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,11 +202,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A6B698F1A6D96400008D4A0 /* Main.storyboard in Resources */,
-				8A6B69AE1A6D9CBC0008D4A0 /* blue-frog.jpg in Resources */,
 				8A6B69941A6D96400008D4A0 /* LaunchScreen.xib in Resources */,
-				8A6B69AB1A6D99600008D4A0 /* quinton_black.jpg in Resources */,
 				8A6B69911A6D96400008D4A0 /* Images.xcassets in Resources */,
-				8A6B69AF1A6D9CBC0008D4A0 /* wlulogo.jpg in Resources */,
+				8A6B69B51A6DA6190008D4A0 /* quinton_black.jpg in Resources */,
+				8A6B69B31A6DA6190008D4A0 /* blue-frog.jpg in Resources */,
+				8A6B69B71A6DA6530008D4A0 /* wlulogo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
