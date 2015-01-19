@@ -24,19 +24,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sl8-Co-L20">
-                                <rect key="frame" x="286" y="277" width="29" height="21"/>
+                                <rect key="frame" x="286" y="251" width="29" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBJ-YW-tly">
-                                <rect key="frame" x="286" y="444" width="29" height="21"/>
+                                <rect key="frame" x="286" y="366" width="29" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nz8-N2-3QK">
-                                <rect key="frame" x="253" y="523" width="94" height="30"/>
+                                <rect key="frame" x="253" y="419" width="94" height="30"/>
                                 <state key="normal" title="Show Answer">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxt-RO-CpD">
-                                <rect key="frame" x="248" y="356" width="105" height="30"/>
+                                <rect key="frame" x="248" y="304" width="105" height="30"/>
                                 <state key="normal" title="Show Question">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -58,13 +58,13 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="OBJ-YW-tly" secondAttribute="centerX" id="1ZR-5j-hcM"/>
                             <constraint firstItem="wnS-gO-5CP" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="Nn1-b7-o33"/>
-                            <constraint firstItem="OBJ-YW-tly" firstAttribute="top" secondItem="Fxt-RO-CpD" secondAttribute="bottom" constant="58" id="OJ7-Ho-fdG"/>
-                            <constraint firstItem="Nz8-N2-3QK" firstAttribute="top" secondItem="OBJ-YW-tly" secondAttribute="bottom" constant="58" id="U4f-eu-9rx"/>
-                            <constraint firstItem="Fxt-RO-CpD" firstAttribute="top" secondItem="Sl8-Co-L20" secondAttribute="bottom" constant="58" id="ewO-mb-bTe"/>
+                            <constraint firstItem="OBJ-YW-tly" firstAttribute="top" secondItem="Fxt-RO-CpD" secondAttribute="bottom" constant="32" id="OJ7-Ho-fdG"/>
+                            <constraint firstItem="Nz8-N2-3QK" firstAttribute="top" secondItem="OBJ-YW-tly" secondAttribute="bottom" constant="32" id="U4f-eu-9rx"/>
+                            <constraint firstItem="Fxt-RO-CpD" firstAttribute="top" secondItem="Sl8-Co-L20" secondAttribute="bottom" constant="32" id="ewO-mb-bTe"/>
                             <constraint firstAttribute="centerX" secondItem="wnS-gO-5CP" secondAttribute="centerX" constant="-1" id="fXg-Uc-E5P"/>
                             <constraint firstAttribute="centerX" secondItem="Fxt-RO-CpD" secondAttribute="centerX" id="gaR-kV-6Lp"/>
                             <constraint firstAttribute="centerX" secondItem="Nz8-N2-3QK" secondAttribute="centerX" id="iZD-um-0xx"/>
-                            <constraint firstItem="Sl8-Co-L20" firstAttribute="top" secondItem="wnS-gO-5CP" secondAttribute="bottom" constant="58" id="k4n-cp-wou"/>
+                            <constraint firstItem="Sl8-Co-L20" firstAttribute="top" secondItem="wnS-gO-5CP" secondAttribute="bottom" constant="32" id="k4n-cp-wou"/>
                             <constraint firstAttribute="centerX" secondItem="Sl8-Co-L20" secondAttribute="centerX" id="t9P-Ip-0c9"/>
                         </constraints>
                     </view>
