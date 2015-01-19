@@ -16,6 +16,7 @@
 		8A6B69B31A6DA6190008D4A0 /* blue-frog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B69B01A6DA6190008D4A0 /* blue-frog.jpg */; };
 		8A6B69B51A6DA6190008D4A0 /* quinton_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B69B21A6DA6190008D4A0 /* quinton_black.jpg */; };
 		8A6B69B71A6DA6530008D4A0 /* wlulogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B69B61A6DA6530008D4A0 /* wlulogo.jpg */; };
+		8A6B69B91A6DB2A40008D4A0 /* riddler.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B69B81A6DB2A40008D4A0 /* riddler.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		8A6B69B01A6DA6190008D4A0 /* blue-frog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "blue-frog.jpg"; sourceTree = "<group>"; };
 		8A6B69B21A6DA6190008D4A0 /* quinton_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = quinton_black.jpg; sourceTree = "<group>"; };
 		8A6B69B61A6DA6530008D4A0 /* wlulogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wlulogo.jpg; sourceTree = "<group>"; };
+		8A6B69B81A6DB2A40008D4A0 /* riddler.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = riddler.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		8A6B69871A6D96400008D4A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8A6B69B81A6DB2A40008D4A0 /* riddler.jpg */,
 				8A6B69B61A6DA6530008D4A0 /* wlulogo.jpg */,
 				8A6B69B01A6DA6190008D4A0 /* blue-frog.jpg */,
 				8A6B69B21A6DA6190008D4A0 /* quinton_black.jpg */,
@@ -201,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A6B69B91A6DB2A40008D4A0 /* riddler.jpg in Resources */,
 				8A6B698F1A6D96400008D4A0 /* Main.storyboard in Resources */,
 				8A6B69941A6D96400008D4A0 /* LaunchScreen.xib in Resources */,
 				8A6B69911A6D96400008D4A0 /* Images.xcassets in Resources */,

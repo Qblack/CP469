@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Quinton Black. All rights reserved.
 //
 
-import UIKit
+import UIKit;
+
 
 class ViewController: UIViewController {
     
@@ -16,11 +17,12 @@ class ViewController: UIViewController {
         var image_name:String;
     }
     var questions:[Question] = []
-    var index:Int = 0;
+    var index:Int = 1;
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var showAnswerButton: UIButton!
     
     func makeQuestions(){
         questions.append(Question(question:"What is my name?", answer:"Quinton Black",image_name:"quinton_black.jpg"));
@@ -35,6 +37,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         makeQuestions();
+        showAnswerButton.enabled=false;
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,20 +46,26 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func ShowQuestion(sender: UIButton) {
+    @IBAction func showQuestion(sender: AnyObject) {
+        showAnswerButton.enabled=true;
         var question = questions[index];
         questionLabel.text = question.question;
         var nextImage = UIImage(named: question.image_name);
         image.image = nextImage; // set UIImageView to UIImage
         answerLabel.text="???";
         
-        
-        index = (index+1) % questions.count;
+        index = (index+1) % (questions.count);
         
     }
 
+
     @IBAction func showAnswer(sender: UIButton) {
-        var question = questions[(index-1)%questions.count];
+        
+        var element = (index-1) % questions.count;
+        if (element == -1){
+            element = questions.count-1;
+        }
+        var question = questions[element];
         answerLabel.text = question.answer;
     }
     
