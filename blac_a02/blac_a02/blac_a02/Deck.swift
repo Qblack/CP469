@@ -15,7 +15,9 @@ struct Deck{
     static var current:Int = 0 // the current card on the deck (to be shown in the scene)
     
     init(){
-        Deck.m_deck.append(Card(question:"In a marble hall white as milk lined with skin as soft as silk within a fountain crystal-clear. A golden apple doth appear. No doors there are to this stronghold, yet thieves break in to steal its gold.",answer:"An Egg.",image:"golden-apple-border.jpg")
+        Deck.m_deck.append(Card(question:"In a marble hall white as milk lined with skin as soft as silk within a fountain crystal-clear. A golden apple doth appear. No doors there are to this stronghold, yet thieves break in to steal its gold.",
+            answer:"An Egg.",
+            image:"golden-apple-border.jpg")
         );
         Deck.m_deck.append(Card(question:"What goes up a chimney down, but won't go down a chimney up?",
             answer:"An Umbrella",
