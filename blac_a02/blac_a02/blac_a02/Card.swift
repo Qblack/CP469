@@ -9,8 +9,8 @@
 import Foundation;
 
 struct Card {
-    let image:String;
     let question:String;
     let answer:String;
+    let image:String;
 }
 			
