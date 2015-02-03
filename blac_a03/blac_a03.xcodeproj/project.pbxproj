@@ -13,6 +13,15 @@
 		3F5C175C1A8002CD002BAFD9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C175B1A8002CD002BAFD9 /* Images.xcassets */; };
 		3F5C175F1A8002CD002BAFD9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C175D1A8002CD002BAFD9 /* LaunchScreen.xib */; };
 		3F5C176B1A8002CE002BAFD9 /* blac_a03Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C176A1A8002CE002BAFD9 /* blac_a03Tests.swift */; };
+		3F7963A71A804E8A003FC84B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7963A61A804E8A003FC84B /* Card.swift */; };
+		3F7963A91A804EBE003FC84B /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7963A81A804EBE003FC84B /* Deck.swift */; };
+		3F7963B01A804F1E003FC84B /* 61-bigger_dog_gets_the_bone.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7963AA1A804F1E003FC84B /* 61-bigger_dog_gets_the_bone.png */; };
+		3F7963B11A804F1E003FC84B /* FetchImage.ashx.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3F7963AB1A804F1E003FC84B /* FetchImage.ashx.jpeg */; };
+		3F7963B21A804F1E003FC84B /* funny-wet-cats-36.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F7963AC1A804F1E003FC84B /* funny-wet-cats-36.jpg */; };
+		3F7963B31A804F1E003FC84B /* golden-apple-border.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F7963AD1A804F1E003FC84B /* golden-apple-border.jpg */; };
+		3F7963B41A804F1E003FC84B /* oedipus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F7963AE1A804F1E003FC84B /* oedipus.jpg */; };
+		3F7963B51A804F1E003FC84B /* whos-that-pokemon-pikachu.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7963AF1A804F1E003FC84B /* whos-that-pokemon-pikachu.png */; };
+		3F7963B91A8069A3003FC84B /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7963B81A8069A3003FC84B /* PickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +45,15 @@
 		3F5C17641A8002CE002BAFD9 /* blac_a03Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = blac_a03Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F5C17691A8002CE002BAFD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F5C176A1A8002CE002BAFD9 /* blac_a03Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blac_a03Tests.swift; sourceTree = "<group>"; };
+		3F7963A61A804E8A003FC84B /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		3F7963A81A804EBE003FC84B /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		3F7963AA1A804F1E003FC84B /* 61-bigger_dog_gets_the_bone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "61-bigger_dog_gets_the_bone.png"; sourceTree = "<group>"; };
+		3F7963AB1A804F1E003FC84B /* FetchImage.ashx.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FetchImage.ashx.jpeg; sourceTree = "<group>"; };
+		3F7963AC1A804F1E003FC84B /* funny-wet-cats-36.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "funny-wet-cats-36.jpg"; sourceTree = "<group>"; };
+		3F7963AD1A804F1E003FC84B /* golden-apple-border.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "golden-apple-border.jpg"; sourceTree = "<group>"; };
+		3F7963AE1A804F1E003FC84B /* oedipus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oedipus.jpg; sourceTree = "<group>"; };
+		3F7963AF1A804F1E003FC84B /* whos-that-pokemon-pikachu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whos-that-pokemon-pikachu.png"; sourceTree = "<group>"; };
+		3F7963B81A8069A3003FC84B /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +98,12 @@
 				3F5C17541A8002CD002BAFD9 /* AppDelegate.swift */,
 				3F5C17561A8002CD002BAFD9 /* ViewController.swift */,
 				3F5C17581A8002CD002BAFD9 /* Main.storyboard */,
-				3F5C175B1A8002CD002BAFD9 /* Images.xcassets */,
 				3F5C175D1A8002CD002BAFD9 /* LaunchScreen.xib */,
+				3F5C175B1A8002CD002BAFD9 /* Images.xcassets */,
 				3F5C17521A8002CD002BAFD9 /* Supporting Files */,
+				3F7963A61A804E8A003FC84B /* Card.swift */,
+				3F7963A81A804EBE003FC84B /* Deck.swift */,
+				3F7963B81A8069A3003FC84B /* PickerViewController.swift */,
 			);
 			path = blac_a03;
 			sourceTree = "<group>";
@@ -90,6 +111,12 @@
 		3F5C17521A8002CD002BAFD9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3F7963AA1A804F1E003FC84B /* 61-bigger_dog_gets_the_bone.png */,
+				3F7963AB1A804F1E003FC84B /* FetchImage.ashx.jpeg */,
+				3F7963AC1A804F1E003FC84B /* funny-wet-cats-36.jpg */,
+				3F7963AD1A804F1E003FC84B /* golden-apple-border.jpg */,
+				3F7963AE1A804F1E003FC84B /* oedipus.jpg */,
+				3F7963AF1A804F1E003FC84B /* whos-that-pokemon-pikachu.png */,
 				3F5C17531A8002CD002BAFD9 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -192,9 +219,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F7963B31A804F1E003FC84B /* golden-apple-border.jpg in Resources */,
+				3F7963B51A804F1E003FC84B /* whos-that-pokemon-pikachu.png in Resources */,
+				3F7963B01A804F1E003FC84B /* 61-bigger_dog_gets_the_bone.png in Resources */,
 				3F5C175A1A8002CD002BAFD9 /* Main.storyboard in Resources */,
+				3F7963B41A804F1E003FC84B /* oedipus.jpg in Resources */,
 				3F5C175F1A8002CD002BAFD9 /* LaunchScreen.xib in Resources */,
 				3F5C175C1A8002CD002BAFD9 /* Images.xcassets in Resources */,
+				3F7963B11A804F1E003FC84B /* FetchImage.ashx.jpeg in Resources */,
+				3F7963B21A804F1E003FC84B /* funny-wet-cats-36.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +245,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F7963B91A8069A3003FC84B /* PickerViewController.swift in Sources */,
+				3F7963A91A804EBE003FC84B /* Deck.swift in Sources */,
 				3F5C17571A8002CD002BAFD9 /* ViewController.swift in Sources */,
+				3F7963A71A804E8A003FC84B /* Card.swift in Sources */,
 				3F5C17551A8002CD002BAFD9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +441,7 @@
 				3F5C17701A8002CE002BAFD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F5C17711A8002CE002BAFD9 /* Build configuration list for PBXNativeTarget "blac_a03Tests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +450,7 @@
 				3F5C17731A8002CE002BAFD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

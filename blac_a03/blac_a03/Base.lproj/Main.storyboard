@@ -1,13 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="byu-Fa-eZh">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Picker-->
+        <scene sceneID="ohq-d7-Xif">
+            <objects>
+                <viewController id="gUQ-41-Ecl" customClass="PickerViewController" customModule="blac_a03" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mLD-2A-dyn"/>
+                        <viewControllerLayoutGuide type="bottom" id="AaB-Zr-MzQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="swT-n9-fGD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bn-0M-eW4">
+                                <rect key="frame" x="140" y="50" width="320" height="162"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6v-0L-mYE">
+                                <rect key="frame" x="253" y="305" width="94" height="30"/>
+                                <state key="normal" title="Show Answer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showAnswer:" destination="gUQ-41-Ecl" eventType="touchUpInside" id="iDW-tJ-H6s"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="golden-apple-border.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ld6-KU-4uQ">
+                                <rect key="frame" x="200" y="364" width="200" height="148"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Ld6-KU-4uQ" secondAttribute="centerX" id="LhO-O9-NA8"/>
+                            <constraint firstItem="AaB-Zr-MzQ" firstAttribute="top" secondItem="Ld6-KU-4uQ" secondAttribute="bottom" constant="39" id="LnX-NS-HrN"/>
+                            <constraint firstAttribute="centerX" secondItem="Y6v-0L-mYE" secondAttribute="centerX" id="LtM-Lv-dqG"/>
+                            <constraint firstItem="Ld6-KU-4uQ" firstAttribute="top" secondItem="Y6v-0L-mYE" secondAttribute="bottom" constant="29" id="M5V-IG-SHk"/>
+                            <constraint firstItem="9bn-0M-eW4" firstAttribute="top" secondItem="mLD-2A-dyn" secondAttribute="bottom" constant="30" id="YTK-IQ-Q7v"/>
+                            <constraint firstAttribute="centerX" secondItem="9bn-0M-eW4" secondAttribute="centerX" id="xIj-98-6QG"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Picker" id="xR2-ev-Y5A"/>
+                    <connections>
+                        <outlet property="m_image" destination="Ld6-KU-4uQ" id="86c-Cc-R1C"/>
+                        <outlet property="m_picker" destination="9bn-0M-eW4" id="FHo-Bf-8QX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KVi-Bp-ZWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="704" y="441"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="QdQ-N0-jF3">
+            <objects>
+                <tabBarController id="byu-Fa-eZh" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="xoy-gd-ZWc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="gUQ-41-Ecl" kind="relationship" relationship="viewControllers" id="dob-Ic-Dea"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="30W-2N-OCB"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Enz-j3-4CY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="392" y="-312"/>
+        </scene>
+        <!--Deck-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="blac_a03" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,11 +83,76 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4h-io-oCT">
+                                <rect key="frame" x="21" y="184" width="558" height="99"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="99" id="fC7-hz-DLT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tnP-n4-03G">
+                                <rect key="frame" x="248" y="326" width="105" height="30"/>
+                                <state key="normal" title="Show Question">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showQuestion:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hFr-L5-5wS"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MxF-nU-6ik">
+                                <rect key="frame" x="286" y="388" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="golden-apple-border.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="OpC-ep-NXY">
+                                <rect key="frame" x="200" y="28" width="200" height="148"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="9bo-DO-YpA"/>
+                                    <constraint firstAttribute="height" constant="148" id="kdd-ml-wem"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W13-CP-jXh">
+                                <rect key="frame" x="253" y="441" width="94" height="30"/>
+                                <state key="normal" title="Show Answer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showAnswer:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ldg-fo-mp5"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MxF-nU-6ik" firstAttribute="top" secondItem="tnP-n4-03G" secondAttribute="bottom" constant="32" id="9V7-Sr-Fac"/>
+                            <constraint firstAttribute="centerX" secondItem="MxF-nU-6ik" secondAttribute="centerX" id="Cwi-07-8EF"/>
+                            <constraint firstItem="W13-CP-jXh" firstAttribute="top" secondItem="MxF-nU-6ik" secondAttribute="bottom" constant="32" id="GeH-nW-sjk"/>
+                            <constraint firstItem="d4h-io-oCT" firstAttribute="top" secondItem="OpC-ep-NXY" secondAttribute="bottom" constant="8" id="HmV-Xq-VGL"/>
+                            <constraint firstItem="OpC-ep-NXY" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="JNX-Lt-8k8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d4h-io-oCT" secondAttribute="trailing" constant="5" id="NHz-AA-p9y"/>
+                            <constraint firstAttribute="centerX" secondItem="tnP-n4-03G" secondAttribute="centerX" id="cDM-gz-gCT"/>
+                            <constraint firstAttribute="centerX" secondItem="OpC-ep-NXY" secondAttribute="centerX" id="cRZ-pY-QrC"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="W13-CP-jXh" secondAttribute="bottom" constant="80" id="fbu-YV-eH6"/>
+                            <constraint firstItem="d4h-io-oCT" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="5" id="mZ1-Cw-aji"/>
+                            <constraint firstAttribute="centerX" secondItem="W13-CP-jXh" secondAttribute="centerX" id="s51-2D-bNb"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Deck" id="vzr-Lf-14t"/>
+                    <connections>
+                        <outlet property="m_answer" destination="MxF-nU-6ik" id="1Nr-9T-9pl"/>
+                        <outlet property="m_image" destination="OpC-ep-NXY" id="cZW-y8-JPQ"/>
+                        <outlet property="m_question" destination="d4h-io-oCT" id="rii-rT-nGP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="78" y="441"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="golden-apple-border.jpg" width="200" height="148"/>
+    </resources>
 </document>
