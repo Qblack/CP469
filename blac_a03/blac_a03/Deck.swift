@@ -15,11 +15,6 @@ struct Deck{
     
     static var current:Int = 0 // the current card on the deck (to be shown in the scene)
     
-    init(){
-        
-        
-    }
-    
     static func addCard(card:Card){
         m_deck.append(card);
     }
@@ -27,6 +22,11 @@ struct Deck{
     static func getCard()->Card{
         var currentCard:Card = m_deck[current];
         return currentCard;
+    }
+    
+    static func getCard(index:Int)->Card{
+        var card:Card = m_deck[index];
+        return card;
     }
     
     static func getNextCard()->Card{
@@ -42,4 +42,9 @@ struct Deck{
     static func getCardIndex() -> Int {
         return current;
     }
+    
+    static func count() -> Int {
+        return m_deck.count;
+    }
+    
 }

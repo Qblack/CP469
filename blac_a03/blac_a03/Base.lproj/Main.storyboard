@@ -19,6 +19,10 @@
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bn-0M-eW4">
                                 <rect key="frame" x="140" y="50" width="320" height="162"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gUQ-41-Ecl" id="BA3-YP-wl1"/>
+                                    <outlet property="delegate" destination="gUQ-41-Ecl" id="tIw-fs-RBH"/>
+                                </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6v-0L-mYE">
                                 <rect key="frame" x="253" y="305" width="94" height="30"/>
@@ -26,11 +30,15 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showAnswer:" destination="gUQ-41-Ecl" eventType="touchUpInside" id="iDW-tJ-H6s"/>
+                                    <action selector="showAnswer:" destination="gUQ-41-Ecl" eventType="touchUpInside" id="mF6-9F-Vao"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="golden-apple-border.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ld6-KU-4uQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sonic.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ld6-KU-4uQ">
                                 <rect key="frame" x="200" y="364" width="200" height="148"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="148" id="cqc-xm-QuM"/>
+                                    <constraint firstAttribute="width" constant="200" id="xgX-Xu-kxi"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,7 +51,7 @@
                             <constraint firstAttribute="centerX" secondItem="9bn-0M-eW4" secondAttribute="centerX" id="xIj-98-6QG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Picker" id="xR2-ev-Y5A"/>
+                    <tabBarItem key="tabBarItem" title="Picker" image="depositphotos_11836186-Slots-Word-Casino-Slot-Machine-Wheels-Handle.png" selectedImage="FetchImage.ashx.jpeg" id="xR2-ev-Y5A"/>
                     <connections>
                         <outlet property="m_image" destination="Ld6-KU-4uQ" id="86c-Cc-R1C"/>
                         <outlet property="m_picker" destination="9bn-0M-eW4" id="FHo-Bf-8QX"/>
@@ -108,13 +116,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="golden-apple-border.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="OpC-ep-NXY">
-                                <rect key="frame" x="200" y="28" width="200" height="148"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="9bo-DO-YpA"/>
-                                    <constraint firstAttribute="height" constant="148" id="kdd-ml-wem"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W13-CP-jXh">
                                 <rect key="frame" x="253" y="441" width="94" height="30"/>
                                 <state key="normal" title="Show Answer">
@@ -124,6 +125,13 @@
                                     <action selector="showAnswer:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ldg-fo-mp5"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sonic.png" translatesAutoresizingMaskIntoConstraints="NO" id="OpC-ep-NXY">
+                                <rect key="frame" x="200" y="28" width="200" height="148"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="9bo-DO-YpA"/>
+                                    <constraint firstAttribute="height" constant="148" id="kdd-ml-wem"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -140,7 +148,7 @@
                             <constraint firstAttribute="centerX" secondItem="W13-CP-jXh" secondAttribute="centerX" id="s51-2D-bNb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Deck" id="vzr-Lf-14t"/>
+                    <tabBarItem key="tabBarItem" title="Deck" image="acqzMxzcM.png" selectedImage="acqzMxzcM.png" id="vzr-Lf-14t"/>
                     <connections>
                         <outlet property="m_answer" destination="MxF-nU-6ik" id="1Nr-9T-9pl"/>
                         <outlet property="m_image" destination="OpC-ep-NXY" id="cZW-y8-JPQ"/>
@@ -153,6 +161,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="golden-apple-border.jpg" width="200" height="148"/>
+        <image name="FetchImage.ashx.jpeg" width="240" height="244"/>
+        <image name="acqzMxzcM.png" width="600" height="442"/>
+        <image name="depositphotos_11836186-Slots-Word-Casino-Slot-Machine-Wheels-Handle.png" width="1024" height="897"/>
+        <image name="sonic.png" width="2000" height="2000"/>
     </resources>
 </document>

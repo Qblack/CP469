@@ -18,33 +18,32 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        Deck.addCard(Card(question:"In a marble hall white as milk lined with skin as soft as silk within a fountain crystal-clear. A golden apple doth appear. No doors there are to this stronghold, yet thieves break in to steal its gold.",
-            answer:"An Egg.",
-            image:"golden-apple-border.jpg")
-        );
-        Deck.addCard(Card(question:"What goes up a chimney down, but won't go down a chimney up?",
-            answer:"An Umbrella",
-            image:"FetchImage.ashx.jpeg")
-        );
-        Deck.addCard(Card(question:"What walks on four legs in the morning, two in the afternoon, and three in the evening?",
-            answer:"A Person.",
-            image:"oedipus.jpg")
-        );
         
-        Deck.addCard(Card(question: "What gets wetter the more it dries?",
-            answer:"A Towel.",
-            image: "funny-wet-cats-36.jpg")
-        );
-        
-        Deck.addCard(Card(question: "What gets bigger the more you take out of it?",
-            answer:"A Hole.",
-            image: "61-bigger_dog_gets_the_bone.png")
-        );
-        
-        Deck.addCard(Card(question: "Whos that Pokemon?",
-            answer:"Pikachu.",
-            image: "whos-that-pokemon-pikachu.png")
-        );
+        if(Deck.count()==0){
+            Deck.addCard(Card(question:"What is my favourite color?",
+                answer:"Blue",
+                image:"sonic.png")
+            );
+            Deck.addCard(Card(question:"What is my name?",
+                answer:"Quinton Black",
+                image:"quinton-black.jpg")
+            );
+            Deck.addCard(Card(question:"What is my favourite Series?",
+                answer:"Malazan Book of the Fallen.",
+                image:"stevenerikson.jpg")
+            );
+            
+            Deck.addCard(Card(question: "What gets wetter the more it dries?",
+                answer:"A Towel.",
+                image: "funny-wet-cats-36.jpg")
+            );
+            
+            Deck.addCard(Card(question: "Whos that Pokemon?",
+                answer:"Pikachu.",
+                image: "whos-that-pokemon-pikachu.png")
+            );
+        }
+
 
         
         

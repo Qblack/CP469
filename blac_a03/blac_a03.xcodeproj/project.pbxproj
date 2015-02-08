@@ -22,6 +22,11 @@
 		3F7963B41A804F1E003FC84B /* oedipus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F7963AE1A804F1E003FC84B /* oedipus.jpg */; };
 		3F7963B51A804F1E003FC84B /* whos-that-pokemon-pikachu.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7963AF1A804F1E003FC84B /* whos-that-pokemon-pikachu.png */; };
 		3F7963B91A8069A3003FC84B /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7963B81A8069A3003FC84B /* PickerViewController.swift */; };
+		3FE790FB1A82E8BE00619536 /* stevenerikson.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FE790FA1A82E8BE00619536 /* stevenerikson.jpg */; };
+		3FE790FD1A82E8F900619536 /* quinton-black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FE790FC1A82E8F900619536 /* quinton-black.jpg */; };
+		3FE790FF1A82E9B400619536 /* sonic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE790FE1A82E9B400619536 /* sonic.png */; };
+		3FE791011A82EBC100619536 /* acqzMxzcM.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE791001A82EBC100619536 /* acqzMxzcM.png */; };
+		3FE791031A82ECDB00619536 /* depositphotos_11836186-Slots-Word-Casino-Slot-Machine-Wheels-Handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE791021A82ECDB00619536 /* depositphotos_11836186-Slots-Word-Casino-Slot-Machine-Wheels-Handle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +59,11 @@
 		3F7963AE1A804F1E003FC84B /* oedipus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oedipus.jpg; sourceTree = "<group>"; };
 		3F7963AF1A804F1E003FC84B /* whos-that-pokemon-pikachu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whos-that-pokemon-pikachu.png"; sourceTree = "<group>"; };
 		3F7963B81A8069A3003FC84B /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		3FE790FA1A82E8BE00619536 /* stevenerikson.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stevenerikson.jpg; sourceTree = "<group>"; };
+		3FE790FC1A82E8F900619536 /* quinton-black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "quinton-black.jpg"; sourceTree = "<group>"; };
+		3FE790FE1A82E9B400619536 /* sonic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sonic.png; sourceTree = "<group>"; };
+		3FE791001A82EBC100619536 /* acqzMxzcM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = acqzMxzcM.png; sourceTree = "<group>"; };
+		3FE791021A82ECDB00619536 /* depositphotos_11836186-Slots-Word-Casino-Slot-Machine-Wheels-Handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "depositphotos_11836186-Slots-Word-Casino-Slot-Machine-Wheels-Handle.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +121,11 @@
 		3F5C17521A8002CD002BAFD9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3FE791021A82ECDB00619536 /* depositphotos_11836186-Slots-Word-Casino-Slot-Machine-Wheels-Handle.png */,
+				3FE791001A82EBC100619536 /* acqzMxzcM.png */,
+				3FE790FE1A82E9B400619536 /* sonic.png */,
+				3FE790FC1A82E8F900619536 /* quinton-black.jpg */,
+				3FE790FA1A82E8BE00619536 /* stevenerikson.jpg */,
 				3F7963AA1A804F1E003FC84B /* 61-bigger_dog_gets_the_bone.png */,
 				3F7963AB1A804F1E003FC84B /* FetchImage.ashx.jpeg */,
 				3F7963AC1A804F1E003FC84B /* funny-wet-cats-36.jpg */,
@@ -219,15 +234,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE791031A82ECDB00619536 /* depositphotos_11836186-Slots-Word-Casino-Slot-Machine-Wheels-Handle.png in Resources */,
 				3F7963B31A804F1E003FC84B /* golden-apple-border.jpg in Resources */,
 				3F7963B51A804F1E003FC84B /* whos-that-pokemon-pikachu.png in Resources */,
 				3F7963B01A804F1E003FC84B /* 61-bigger_dog_gets_the_bone.png in Resources */,
+				3FE790FD1A82E8F900619536 /* quinton-black.jpg in Resources */,
+				3FE790FF1A82E9B400619536 /* sonic.png in Resources */,
 				3F5C175A1A8002CD002BAFD9 /* Main.storyboard in Resources */,
 				3F7963B41A804F1E003FC84B /* oedipus.jpg in Resources */,
 				3F5C175F1A8002CD002BAFD9 /* LaunchScreen.xib in Resources */,
 				3F5C175C1A8002CD002BAFD9 /* Images.xcassets in Resources */,
+				3FE790FB1A82E8BE00619536 /* stevenerikson.jpg in Resources */,
 				3F7963B11A804F1E003FC84B /* FetchImage.ashx.jpeg in Resources */,
 				3F7963B21A804F1E003FC84B /* funny-wet-cats-36.jpg in Resources */,
+				3FE791011A82EBC100619536 /* acqzMxzcM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
