@@ -17,17 +17,15 @@ class AnswerController : UIViewController {
     @IBOutlet weak var question: UILabel!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var answer: UILabel!
-    var index: Int = 0;
     var m_url : String = "";
-    
+    var card : Card?;
     	
     
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        var card: Card = Deck.getCard(index);
-        displayCard(card);
-        m_url = card.url;
+        displayCard(self.card!);
+        m_url = self.card!.url;
         
         // Do any additional setup after loading the view, typically from a nib.
     }

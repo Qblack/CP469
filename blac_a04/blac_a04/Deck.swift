@@ -53,5 +53,8 @@ struct Deck{
         
         return questions;
     }
+    static func getCards() -> [Card]{
+        return m_deck;
+    }
     
 }

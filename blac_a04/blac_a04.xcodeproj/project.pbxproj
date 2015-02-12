@@ -26,6 +26,7 @@
 		3F6FA3141A8726EA00ADD04A /* quinton-adam.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F6FA3131A8726EA00ADD04A /* quinton-adam.jpg */; };
 		3F6FA3181A87E14B00ADD04A /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6FA3171A87E14B00ADD04A /* WebsiteViewController.swift */; };
 		3F6FA31A1A87EDA000ADD04A /* QuestionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6FA3191A87EDA000ADD04A /* QuestionTableCell.swift */; };
+		3FA81F571A8C417300837DAF /* lizard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FA81F561A8C417300837DAF /* lizard.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		3F6FA3131A8726EA00ADD04A /* quinton-adam.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "quinton-adam.jpg"; sourceTree = "<group>"; };
 		3F6FA3171A87E14B00ADD04A /* WebsiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
 		3F6FA3191A87EDA000ADD04A /* QuestionTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableCell.swift; sourceTree = "<group>"; };
+		3FA81F561A8C417300837DAF /* lizard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lizard.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		3F6FA2A81A87064200ADD04A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3FA81F561A8C417300837DAF /* lizard.jpg */,
 				3F6FA3131A8726EA00ADD04A /* quinton-adam.jpg */,
 				3F6FA30F1A8717E400ADD04A /* ar129838104398278.jpg */,
 				3F6FA30D1A87170E00ADD04A /* wilfrid_laurier_university.jpg */,
@@ -234,6 +237,7 @@
 				3F6FA3101A8717E400ADD04A /* ar129838104398278.jpg in Resources */,
 				3F6FA2B01A87064200ADD04A /* Main.storyboard in Resources */,
 				3F6FA2B51A87064200ADD04A /* LaunchScreen.xib in Resources */,
+				3FA81F571A8C417300837DAF /* lizard.jpg in Resources */,
 				3F6FA2B21A87064200ADD04A /* Images.xcassets in Resources */,
 				3F6FA30E1A87170E00ADD04A /* wilfrid_laurier_university.jpg in Resources */,
 				3F6FA3141A8726EA00ADD04A /* quinton-adam.jpg in Resources */,
