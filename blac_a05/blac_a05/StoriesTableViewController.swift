@@ -8,9 +8,8 @@
 
 import UIKit
 
-class StoriesTableViewController: UITableViewController, UITableViewDataSource {
+class StoriesTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var m_stories:[Story] = [Story]();
     var m_rssParser = RSSParser(urlPath:"http://rss.cbc.ca/lineup/topstories.xml");
 
     override func viewDidLoad() {
@@ -21,7 +20,6 @@ class StoriesTableViewController: UITableViewController, UITableViewDataSource {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    
         
     }
 
@@ -36,7 +34,8 @@ class StoriesTableViewController: UITableViewController, UITableViewDataSource {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return m_stories.count;
+
+        return m_rssParser.numberOfElements();
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -48,9 +47,8 @@ class StoriesTableViewController: UITableViewController, UITableViewDataSource {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell;
         
-        cell.textLabel?.text = m_stories[indexPath.row].title;
 
-        
+        cell.textLabel?.text = m_rssParser.getItem(indexPath.row).title;
         return cell;
     }
     

@@ -17,11 +17,23 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aAQ-J1-QhQ" id="9Bn-rt-A7R">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CT8-nW-6Ls">
+                                            <rect key="frame" x="279" y="11" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="CT8-nW-6Ls" secondAttribute="centerY" id="CtC-L9-F8R"/>
+                                        <constraint firstAttribute="centerX" secondItem="CT8-nW-6Ls" secondAttribute="centerX" id="sOE-O2-nsk"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="eYP-rE-Mmm" id="FcL-Lw-U95"/>
+                            <outlet property="dataSource" destination="eYP-rE-Mmm" id="1G2-4n-5mF"/>
                             <outlet property="delegate" destination="eYP-rE-Mmm" id="NxR-PT-zb9"/>
                         </connections>
                     </tableView>

@@ -58,7 +58,7 @@ class RSSParser: NSObject, NSXMLParserDelegate {
         if elementName == "item"{
             var story : Story = Story(data:currentElement);
             itemsArray.append(story);
-//            println(currentElement);
+            println(currentElement);
             currentElement = "";
             processingItem = false;
         }
@@ -74,6 +74,18 @@ class RSSParser: NSObject, NSXMLParserDelegate {
     func parser(parser: NSXMLParser!, parseErrorOccurred parseError: NSError!) {
         NSLog("failure error: %@", parseError)
     }
+    
+    func getItems() -> [Story]{
+        return itemsArray;
+    }
+    func getItem(index : Int) -> Story{
+        return itemsArray[index];
+    }
+    
+    func numberOfElements()->Int{
+        return itemsArray.count;
+    }
+    
 
    
 }
