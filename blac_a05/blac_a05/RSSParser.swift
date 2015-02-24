@@ -56,7 +56,7 @@ class RSSParser: NSObject, NSXMLParserDelegate {
     func parser(parser: NSXMLParser!, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!) {
         
         if elementName == "item"{
-            var story : Story = Story(content:currentElement);
+            var story : Story = Story(data:currentElement);
             itemsArray.append(story);
 //            println(currentElement);
             currentElement = "";
