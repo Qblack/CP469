@@ -10,12 +10,17 @@ import UIKit
 
 class ArticleWebViewController: UIViewController {
 
+    @IBOutlet weak var navbar: UINavigationItem!
     @IBOutlet weak var webView: UIWebView!
     
     var url = "";
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        
+        
         let ns_url = NSURL(string: url)!;
         let request = NSURLRequest(URL: ns_url);
         webView.loadRequest(request);

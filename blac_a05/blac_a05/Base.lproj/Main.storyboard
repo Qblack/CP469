@@ -35,7 +35,7 @@
             </objects>
             <point key="canvasLocation" x="654" y="463"/>
         </scene>
-        <!--Article Web View Controller-->
+        <!--Title-->
         <scene sceneID="6HA-JG-cvi">
             <objects>
                 <viewController id="cbr-Qu-jTE" customClass="ArticleWebViewController" customModule="blac_a05" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,7 +61,9 @@
                             <constraint firstAttribute="centerX" secondItem="I05-xu-qcd" secondAttribute="centerX" id="alq-Bq-n9w"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="bvW-JO-s2P"/>
                     <connections>
+                        <outlet property="navbar" destination="bvW-JO-s2P" id="vRO-Pt-v9a"/>
                         <outlet property="webView" destination="I05-xu-qcd" id="eUY-B6-wEr"/>
                     </connections>
                 </viewController>
@@ -116,7 +118,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="VG3-nS-5Cs">
-                        <barButtonItem key="backBarButtonItem" title="Back" width="5" id="EAG-Yb-0mB"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" width="50" id="EAG-Yb-0mB"/>
                     </navigationItem>
                     <connections>
                         <outlet property="articleContent" destination="IU9-T1-S1Z" id="Sbx-1n-jZR"/>
