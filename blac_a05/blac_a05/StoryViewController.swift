@@ -22,15 +22,13 @@ class StoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         navbar.title = story.title;
-         articleContent.text = story.content;
-        let url = NSURL(string: story.imageUrl)
-        let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-        var image = UIImage(data: data!)
-        imageButton.setImage( image, forState: UIControlState.Normal);
-        imageButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Fill;
-        imageButton.contentVerticalAlignment = UIControlContentVerticalAlignment.Fill;
+        articleContent.text = story.content;
+        let url = NSURL(string: story.imageUrl);
+        let data = NSData(contentsOfURL: url!);
+        var image = UIImage(data: data!);
+        imageButton.setBackgroundImage(image,forState:UIControlState.Normal);
         imageButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit;
-        // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {

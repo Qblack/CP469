@@ -98,7 +98,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IU9-T1-S1Z">
-                                <rect key="frame" x="66" y="269" width="468" height="311"/>
+                                <rect key="frame" x="66" y="269" width="468" height="131"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -112,7 +112,7 @@
                             <constraint firstItem="QVS-H3-edS" firstAttribute="top" secondItem="RwL-mz-Ebo" secondAttribute="bottom" constant="50" id="Qw4-h0-eID"/>
                             <constraint firstItem="IU9-T1-S1Z" firstAttribute="leading" secondItem="fjJ-5j-QQH" secondAttribute="leadingMargin" constant="50" id="VZq-d8-lqT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IU9-T1-S1Z" secondAttribute="trailing" constant="50" id="hT7-97-wjr"/>
-                            <constraint firstItem="jEy-Vn-zdW" firstAttribute="top" secondItem="IU9-T1-S1Z" secondAttribute="bottom" constant="20" id="pHv-zc-Sb4"/>
+                            <constraint firstItem="jEy-Vn-zdW" firstAttribute="top" secondItem="IU9-T1-S1Z" secondAttribute="bottom" constant="200" id="pHv-zc-Sb4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="VG3-nS-5Cs">
