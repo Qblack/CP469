@@ -14,7 +14,8 @@
 		8A3D55961A9BF4710078BC6C /* blac_a05Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D55951A9BF4710078BC6C /* blac_a05Tests.swift */; };
 		8A3D55A01A9BF5920078BC6C /* StoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D559F1A9BF5920078BC6C /* StoriesTableViewController.swift */; };
 		8A3D55A21A9BF5F20078BC6C /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D55A11A9BF5F20078BC6C /* Story.swift */; };
-		8A3D55A41A9BFF4F0078BC6C /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D55A31A9BFF4F0078BC6C /* RSSParser.swift */; };
+		8A3ED3C51A9D4C1D0095495E /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3ED3C41A9D4C1D0095495E /* StoryViewController.swift */; };
+		8A80F4CA1A9D55A9006AD290 /* ArticleWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A80F4C91A9D55A9006AD290 /* ArticleWebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,8 @@
 		8A3D55951A9BF4710078BC6C /* blac_a05Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blac_a05Tests.swift; sourceTree = "<group>"; };
 		8A3D559F1A9BF5920078BC6C /* StoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoriesTableViewController.swift; sourceTree = "<group>"; };
 		8A3D55A11A9BF5F20078BC6C /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
-		8A3D55A31A9BFF4F0078BC6C /* RSSParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
+		8A3ED3C41A9D4C1D0095495E /* StoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
+		8A80F4C91A9D55A9006AD290 /* ArticleWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleWebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +90,8 @@
 				8A3D557D1A9BF4710078BC6C /* Supporting Files */,
 				8A3D559F1A9BF5920078BC6C /* StoriesTableViewController.swift */,
 				8A3D55A11A9BF5F20078BC6C /* Story.swift */,
-				8A3D55A31A9BFF4F0078BC6C /* RSSParser.swift */,
+				8A3ED3C41A9D4C1D0095495E /* StoryViewController.swift */,
+				8A80F4C91A9D55A9006AD290 /* ArticleWebViewController.swift */,
 			);
 			path = blac_a05;
 			sourceTree = "<group>";
@@ -218,10 +221,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A3ED3C51A9D4C1D0095495E /* StoryViewController.swift in Sources */,
 				8A3D55A01A9BF5920078BC6C /* StoriesTableViewController.swift in Sources */,
 				8A3D55801A9BF4710078BC6C /* AppDelegate.swift in Sources */,
+				8A80F4CA1A9D55A9006AD290 /* ArticleWebViewController.swift in Sources */,
 				8A3D55A21A9BF5F20078BC6C /* Story.swift in Sources */,
-				8A3D55A41A9BFF4F0078BC6C /* RSSParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +417,7 @@
 				8A3D559B1A9BF4710078BC6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8A3D559C1A9BF4710078BC6C /* Build configuration list for PBXNativeTarget "blac_a05Tests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +426,7 @@
 				8A3D559E1A9BF4710078BC6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

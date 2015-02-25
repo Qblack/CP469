@@ -75,6 +75,11 @@ class RSSParser: NSObject, NSXMLParserDelegate {
         NSLog("failure error: %@", parseError)
     }
     
+    func parserDidEndDocument(parser: NSXMLParser!) {
+        
+    }
+    
+    
     func getItems() -> [Story]{
         return itemsArray;
     }

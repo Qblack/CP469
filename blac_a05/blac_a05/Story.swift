@@ -14,9 +14,9 @@ class Story: NSObject {
     var imageUrl: String = "";
     var content: String = "";
 
-    let urlPattern = "http:.*cmp=rss";
-    let imagePattern = "src='.*' ";
-    let contentPattern = "<p>.*</p>";
+    private let urlPattern = "http:.*cmp=rss";
+    private let imagePattern = "src='.*' ";
+    private let contentPattern = "<p>.*</p>";
     
     init(data: String){
         super.init();
@@ -26,6 +26,11 @@ class Story: NSObject {
         var dataArray = data.componentsSeparatedByString("\n");
         self.title = dataArray[1];
     }
+    
+    override init(){
+        super.init();
+    }
+    
     
     private func parseImageURL(pattern: String, string:String )-> String{
         var image:String = getMatchingString(pattern, string: string);
