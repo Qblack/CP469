@@ -22,7 +22,7 @@ class Story: NSObject {
         super.init();
         self.url = getMatchingString(urlPattern, string: data);
         self.imageUrl = parseImageURL(imagePattern,string:data);
-        self.content = parseContent(contentPattern, string: data);
+        self.content = parseContents(contentPattern, string: data);
         var dataArray = data.componentsSeparatedByString("\n");
         self.title = dataArray[1];
     }
@@ -41,7 +41,7 @@ class Story: NSObject {
         return image;
     }
     
-    private func parseContent(pattern: String, string:String )-> String{
+    private func parseContents(pattern: String, string:String )-> String{
         var taggedContent:String = getMatchingString(pattern, string: string);
         var startIndex = advance(taggedContent.startIndex,3);
         taggedContent = taggedContent.substringFromIndex(startIndex);

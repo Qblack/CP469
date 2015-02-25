@@ -21,12 +21,6 @@ class StoriesTableViewController: UITableViewController, UITableViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad();
         self.initialiezeParser(CBC_RSS);
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
     }
 
@@ -34,9 +28,6 @@ class StoriesTableViewController: UITableViewController, UITableViewDataSource, 
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-        
- 
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.

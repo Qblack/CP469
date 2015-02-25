@@ -29,7 +29,9 @@
                             <outlet property="delegate" destination="eYP-rE-Mmm" id="NxR-PT-zb9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="CBC News Feed" id="sVO-v0-Dmz"/>
+                    <navigationItem key="navigationItem" title="CBC News Feed" id="sVO-v0-Dmz">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="cXd-hQ-fXT"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5i-AH-o8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,11 +46,11 @@
                         <viewControllerLayoutGuide type="bottom" id="76O-wV-fJ0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uz7-f0-MZa">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I05-xu-qcd">
-                                <rect key="frame" x="21" y="5" width="558" height="590"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I05-xu-qcd">
+                                <rect key="frame" x="21" y="49" width="558" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -82,17 +84,17 @@
         <!--StoryViewController-->
         <scene sceneID="YZt-ye-HuS">
             <objects>
-                <viewController title="StoryViewController" id="DxL-Av-GG8" customClass="StoryViewController" customModule="blac_a05" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="StoryViewController" modalTransitionStyle="crossDissolve" id="DxL-Av-GG8" customClass="StoryViewController" customModule="blac_a05" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RwL-mz-Ebo"/>
                         <viewControllerLayoutGuide type="bottom" id="jEy-Vn-zdW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fjJ-5j-QQH">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="94" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVS-H3-edS">
-                                <rect key="frame" x="180" y="70" width="240" height="135"/>
+                                <rect key="frame" x="180" y="114" width="240" height="135"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
                                 </accessibility>
@@ -108,7 +110,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IU9-T1-S1Z">
-                                <rect key="frame" x="66" y="225" width="468" height="175"/>
+                                <rect key="frame" x="66" y="269" width="468" height="131"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -125,9 +127,7 @@
                             <constraint firstItem="jEy-Vn-zdW" firstAttribute="top" secondItem="IU9-T1-S1Z" secondAttribute="bottom" constant="200" id="pHv-zc-Sb4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="F1G-zS-z2y">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="BMN-ah-hsd"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="F1G-zS-z2y"/>
                     <connections>
                         <outlet property="articleContent" destination="IU9-T1-S1Z" id="Sbx-1n-jZR"/>
                         <outlet property="imageButton" destination="QVS-H3-edS" id="OSt-4t-viT"/>
