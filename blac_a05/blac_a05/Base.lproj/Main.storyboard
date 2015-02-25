@@ -35,7 +35,7 @@
             </objects>
             <point key="canvasLocation" x="654" y="463"/>
         </scene>
-        <!--Title-->
+        <!--Article Web View Controller-->
         <scene sceneID="6HA-JG-cvi">
             <objects>
                 <viewController id="cbr-Qu-jTE" customClass="ArticleWebViewController" customModule="blac_a05" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,7 +47,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I05-xu-qcd">
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I05-xu-qcd">
                                 <rect key="frame" x="21" y="5" width="558" height="590"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
@@ -61,20 +61,28 @@
                             <constraint firstAttribute="centerX" secondItem="I05-xu-qcd" secondAttribute="centerX" id="alq-Bq-n9w"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="bvW-JO-s2P"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="de7-vL-FVK">
+                        <barButtonItem key="leftBarButtonItem" title="News Feed" id="hYb-Bj-pL0">
+                            <connections>
+                                <segue destination="G6q-JP-dcx" kind="unwind" unwindAction="unwindToHome:" id="ZXh-Kx-MmC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="navbar" destination="bvW-JO-s2P" id="vRO-Pt-v9a"/>
                         <outlet property="webView" destination="I05-xu-qcd" id="eUY-B6-wEr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkP-xf-kdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="G6q-JP-dcx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-152" y="1242"/>
+            <point key="canvasLocation" x="-308" y="1312"/>
         </scene>
-        <!--Title-->
+        <!--StoryViewController-->
         <scene sceneID="YZt-ye-HuS">
             <objects>
-                <viewController id="DxL-Av-GG8" customClass="StoryViewController" customModule="blac_a05" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="StoryViewController" id="DxL-Av-GG8" customClass="StoryViewController" customModule="blac_a05" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RwL-mz-Ebo"/>
                         <viewControllerLayoutGuide type="bottom" id="jEy-Vn-zdW"/>
@@ -84,7 +92,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVS-H3-edS">
-                                <rect key="frame" x="180" y="114" width="240" height="135"/>
+                                <rect key="frame" x="180" y="70" width="240" height="135"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
                                 </accessibility>
@@ -100,7 +108,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IU9-T1-S1Z">
-                                <rect key="frame" x="66" y="269" width="468" height="131"/>
+                                <rect key="frame" x="66" y="225" width="468" height="175"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -117,18 +125,18 @@
                             <constraint firstItem="jEy-Vn-zdW" firstAttribute="top" secondItem="IU9-T1-S1Z" secondAttribute="bottom" constant="200" id="pHv-zc-Sb4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="VG3-nS-5Cs">
-                        <barButtonItem key="backBarButtonItem" title="Back" width="50" id="EAG-Yb-0mB"/>
+                    <navigationItem key="navigationItem" title="Title" id="F1G-zS-z2y">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="BMN-ah-hsd"/>
                     </navigationItem>
                     <connections>
                         <outlet property="articleContent" destination="IU9-T1-S1Z" id="Sbx-1n-jZR"/>
                         <outlet property="imageButton" destination="QVS-H3-edS" id="OSt-4t-viT"/>
-                        <outlet property="navbar" destination="VG3-nS-5Cs" id="fJf-Bx-7c4"/>
+                        <outlet property="navbar" destination="F1G-zS-z2y" id="vng-rN-Jsa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yDS-nZ-hWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="634" y="1242"/>
+            <point key="canvasLocation" x="616" y="1248"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mwt-7S-YMV">

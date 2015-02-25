@@ -17,8 +17,6 @@ class StoryViewController: UIViewController {
     
     var story : Story = Story();
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad();
         navbar.title = story.title;
