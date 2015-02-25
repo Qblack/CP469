@@ -10,8 +10,7 @@ import UIKit
 
 class ArticleWebViewController: UIViewController {
 
-    @IBOutlet weak var navbar: UINavigationItem!
-    @IBOutlet weak var webView: UIWebView!
+     @IBOutlet weak var webView: UIWebView!
     
     var url = "";
     

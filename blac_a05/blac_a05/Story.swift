@@ -20,6 +20,7 @@ class Story: NSObject {
     
     init(data: String){
         super.init();
+        //Parse out data with regex
         self.url = getMatchingString(urlPattern, string: data);
         self.imageUrl = parseImageURL(imagePattern,string:data);
         self.content = parseContents(contentPattern, string: data);
@@ -50,7 +51,6 @@ class Story: NSObject {
         return taggedContent;
     }
     
-
     
     private func getMatchingString(pattern: String, string:String )->String{
         var error: NSError? = nil;

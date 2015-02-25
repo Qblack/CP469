@@ -30,8 +30,7 @@ class StoriesTableViewController: UITableViewController, UITableViewDataSource, 
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
+            // Return the number of rows in the section.
         return self.itemsArray.count;
     }
 
@@ -50,8 +49,7 @@ class StoriesTableViewController: UITableViewController, UITableViewDataSource, 
     
     func initialiezeParser(urlPath:String){
 
-        processingItem = false // we could have initialize this variable in the definition, but I wanted to illustrate the optional ?
-        /* for the cbc feed, try http://rss.cbc.ca/lineup/topstories.xml */
+        processingItem = false
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true;
         var url: NSURL = NSURL(string: urlPath)!;
         var request: NSURLRequest = NSURLRequest(URL: url);
