@@ -1,20 +1,20 @@
 //
-//  GameScene.swift
+//  GameSceneLevel2.swift
 //  blac_a06
 //
 //  Created by Quinton Black on 2015-03-11.
 //  Copyright (c) 2015 Quinton Black. All rights reserved.
 //
 
+//
 import SpriteKit
-import AVFoundation
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
     
     var monstersDestroyed = 0
     
     
- 
+    
     // 1
     let player = SKSpriteNode(imageNamed: "player")
     
@@ -75,7 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMoveDone = SKAction.removeFromParent()
         let loseAction = SKAction.runBlock() {
             let reveal = SKTransition.flipHorizontalWithDuration(0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: false,level: 1)
+            let gameOverScene = GameOverScene(size: self.size, won: false, level:2)
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
         monster.runAction(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
@@ -128,14 +128,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         projectile.removeFromParent()
         monster.removeFromParent()
         monstersDestroyed++
-        if (monstersDestroyed >= 3) {
+        if (monstersDestroyed >= 10) {
             let reveal = SKTransition.flipHorizontalWithDuration(0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: true, level: 1)
+            let gameOverScene = GameOverScene(size: self.size, won: true, level:2)
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
     }
     func didBeginContact(contact: SKPhysicsContact) {
-    
+        
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
         if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
@@ -145,14 +145,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
-    
+        
         if ((firstBody.categoryBitMask & PhysicsCategory.Monster != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.Projectile != 0)) {
                 projectileDidCollideWithMonster(firstBody.node as SKSpriteNode, monster: secondBody.node as SKSpriteNode)
         }
-    
+        
     }
     
     
-     
+    
 }
+
