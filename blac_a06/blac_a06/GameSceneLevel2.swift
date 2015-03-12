@@ -12,6 +12,8 @@ import SpriteKit
 class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
     
     var monstersDestroyed = 0
+    var borderBody: SKPhysicsBody?
+
     
     
     
@@ -22,7 +24,12 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         // 2
         backgroundColor = SKColor.whiteColor()
+        self.physicsWorld.gravity = CGVectorMake(0.0, -9.8);
         
+        //Ground Setup
+        self.physicsBody = SKPhysicsBody(edgeFromPoint: CGPointMake(0.0, 0.0), toPoint: CGPointMake(size.width, 0.0))
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Ground
+
         // 3
         player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
         player.name = "mario"
@@ -31,11 +38,13 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock(addMonster),
-                SKAction.waitForDuration(1.0)
+                SKAction.waitForDuration(1.0),
+                SKAction.runBlock(addThwomp),
+
                 ])
             ))
+   
         
-        physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
         
     }
@@ -58,6 +67,8 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         monster.physicsBody?.categoryBitMask = PhysicsCategory.Monster // 3
         monster.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile // 4
         monster.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
+        monster.physicsBody?.mass = 0.0
+        monster.physicsBody?.affectedByGravity = false
         
         // Determine where to spawn the monster along the Y axis
         let actualY = random(min: monster.size.height/2, max: size.height - monster.size.height/2)
@@ -82,6 +93,35 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         }
         monster.runAction(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
     }
+    
+    func addThwomp(){
+        let thwomp = SKSpriteNode(imageNamed: "thwomp")
+        
+        thwomp.physicsBody = SKPhysicsBody(rectangleOfSize: thwomp.size) // 1
+        
+        // Determine where to spawn the TWOMP along the X axis
+        let actualX = random(min: thwomp.size.width/2, max: size.width - thwomp.size.width/2)
+        
+        thwomp.position = CGPoint(x: actualX , y: size.height - thwomp.size.height)
+        thwomp.physicsBody = SKPhysicsBody(rectangleOfSize: thwomp.size) // define boundary of body
+        thwomp.physicsBody?.dynamic = true
+        thwomp.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile // 4
+        thwomp.physicsBody?.categoryBitMask = PhysicsCategory.Thwomp //
+        thwomp.physicsBody?.collisionBitMask = PhysicsCategory.Ground // Bouncing on collision with ground
+        
+        thwomp.physicsBody?.friction = 0
+        thwomp.physicsBody?.restitution = 0
+        thwomp.physicsBody?.linearDamping = 0
+        thwomp.physicsBody?.allowsRotation = false
+        thwomp.physicsBody?.mass = 1.0
+        
+
+        
+        addChild(thwomp)
+
+
+    }
+    
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         let touch = touches.anyObject() as UITouch
@@ -110,7 +150,10 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         projectile.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
         projectile.physicsBody?.collisionBitMask = PhysicsCategory.None
         projectile.physicsBody?.usesPreciseCollisionDetection = true
+        projectile.physicsBody?.affectedByGravity = false
+        
         projectile.position = player.position
+        
         
         // 3 - Determine offset of location to projectile
         let offset = touchLocation - projectile.position
@@ -139,7 +182,6 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
     }
     
     func projectileDidCollideWithMonster(projectile:SKSpriteNode, monster:SKSpriteNode) {
-        println("Hit")
         projectile.removeFromParent()
         monster.removeFromParent()
         monstersDestroyed++

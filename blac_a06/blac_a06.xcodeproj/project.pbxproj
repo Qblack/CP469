@@ -35,6 +35,7 @@
 		8AABAD471AB1375F00D9F7A2 /* InstructionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABAD461AB1375F00D9F7A2 /* InstructionScene.swift */; };
 		8AABAD491AB13D4100D9F7A2 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABAD481AB13D4100D9F7A2 /* MusicPlayer.swift */; };
 		8AABAD4B1AB141AA00D9F7A2 /* GameSceneLevel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABAD4A1AB141AA00D9F7A2 /* GameSceneLevel2.swift */; };
+		8AABAD511AB148CF00D9F7A2 /* thwomp.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AABAD501AB148CF00D9F7A2 /* thwomp.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		8AABAD461AB1375F00D9F7A2 /* InstructionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionScene.swift; sourceTree = "<group>"; };
 		8AABAD481AB13D4100D9F7A2 /* MusicPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		8AABAD4A1AB141AA00D9F7A2 /* GameSceneLevel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneLevel2.swift; sourceTree = "<group>"; };
+		8AABAD501AB148CF00D9F7A2 /* thwomp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thwomp.png; path = ../../../../Downloads/thwomp.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		8AABACD61AB120B200D9F7A2 /* blac_a06 */ = {
 			isa = PBXGroup;
 			children = (
+				8AABAD501AB148CF00D9F7A2 /* thwomp.png */,
 				8AABAD2A1AB129D400D9F7A2 /* background-music-aac.caf */,
 				8AABAD2B1AB129D400D9F7A2 /* bomb.mp3 */,
 				8AABAD2C1AB129D400D9F7A2 /* bullet-hit.mp3 */,
@@ -271,6 +274,7 @@
 				8AABAD391AB129D400D9F7A2 /* pew-pew-lei.caf in Resources */,
 				8AABAD001AB1243E00D9F7A2 /* monster.gif in Resources */,
 				8AABAD021AB124E400D9F7A2 /* monster.PNG in Resources */,
+				8AABAD511AB148CF00D9F7A2 /* thwomp.png in Resources */,
 				8AABAD3B1AB129D400D9F7A2 /* PlayMusic.png in Resources */,
 				8AABAD041AB1261100D9F7A2 /* projectile.png in Resources */,
 				8AABACFE1AB122FA00D9F7A2 /* player.png in Resources */,

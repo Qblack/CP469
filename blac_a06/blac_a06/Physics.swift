@@ -14,4 +14,6 @@ struct PhysicsCategory {
     static let All       : UInt32 = UInt32.max
     static let Monster   : UInt32 = 0b1       // 1
     static let Projectile: UInt32 = 0b10      // 2
+    static let Ground    : UInt32 = 0b100     // 4
+    static let Thwomp      : UInt32 = 0b1000      // 8
 }
