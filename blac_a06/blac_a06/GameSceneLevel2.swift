@@ -29,17 +29,30 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         //Ground Setup
         self.physicsBody = SKPhysicsBody(edgeFromPoint: CGPointMake(0.0, 0.0), toPoint: CGPointMake(size.width, 0.0))
         self.physicsBody?.categoryBitMask = PhysicsCategory.Ground
+        self.physicsBody?.affectedByGravity = false;
 
+        
         // 3
         player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
         player.name = "mario"
+        player.physicsBody = SKPhysicsBody(rectangleOfSize: player.size)
+        player.physicsBody?.categoryBitMask = PhysicsCategory.Player
+        player.physicsBody?.contactTestBitMask = PhysicsCategory.Thwomp | PhysicsCategory.Monster
+        player.physicsBody?.affectedByGravity = false;
+        player.physicsBody?.mass=0.0
+
         // 4
         addChild(player)
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock(addMonster),
                 SKAction.waitForDuration(1.0),
+                ])
+            ))
+        runAction(SKAction.repeatActionForever(
+            SKAction.sequence([
                 SKAction.runBlock(addThwomp),
+                SKAction.waitForDuration(2.0),
 
                 ])
             ))
@@ -105,7 +118,7 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         thwomp.position = CGPoint(x: actualX , y: size.height - thwomp.size.height)
         thwomp.physicsBody = SKPhysicsBody(rectangleOfSize: thwomp.size) // define boundary of body
         thwomp.physicsBody?.dynamic = true
-        thwomp.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile // 4
+        thwomp.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile | PhysicsCategory.Monster | PhysicsCategory.Player
         thwomp.physicsBody?.categoryBitMask = PhysicsCategory.Thwomp //
         thwomp.physicsBody?.collisionBitMask = PhysicsCategory.Ground // Bouncing on collision with ground
         
@@ -114,8 +127,6 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         thwomp.physicsBody?.linearDamping = 0
         thwomp.physicsBody?.allowsRotation = false
         thwomp.physicsBody?.mass = 1.0
-        
-
         
         addChild(thwomp)
 
@@ -127,9 +138,9 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         let touch = touches.anyObject() as UITouch
         let touchLocation = touch.locationInNode(self)
         let theNode = self.nodeAtPoint(touchLocation)
+        println(theNode.name)
         if( theNode.name == "mario"){
             let actionMove = SKAction.moveTo(touchLocation, duration: 0.1)
-//            let actionMoveDone = SKAction.removeFromParent()
             player.runAction(SKAction.sequence([actionMove]))
         }
         
@@ -147,7 +158,7 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
         projectile.physicsBody?.dynamic = true
         projectile.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
-        projectile.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
+        projectile.physicsBody?.contactTestBitMask = PhysicsCategory.Monster | PhysicsCategory.Thwomp
         projectile.physicsBody?.collisionBitMask = PhysicsCategory.None
         projectile.physicsBody?.usesPreciseCollisionDetection = true
         projectile.physicsBody?.affectedByGravity = false
@@ -191,6 +202,32 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
     }
+    
+    func projectileDidCollideWithThwomp(projectile:SKSpriteNode, thwomp:SKSpriteNode) {
+        projectile.removeFromParent()
+        thwomp.removeFromParent()
+    }
+    
+    func monsterDidCollideWithThwomp(monster: SKSpriteNode, thwomp:SKSpriteNode){
+            //This was shown in class but i dont remember what was supposed to happen if the rock was on the ground.
+//        monster.removeFromParent()
+//        thwomp.removeFromParent()
+    }
+    
+    func nonProjectileDidCollideWithPlayer(item:SKSpriteNode, player:SKSpriteNode) {
+        item.removeFromParent()
+        player.removeFromParent()
+        
+        runAction(SKAction.sequence([
+                SKAction.playSoundFileNamed("scream.mp3", waitForCompletion: false),
+                SKAction.waitForDuration(2.0),
+            ]), completion: {
+                    let reveal = SKTransition.flipHorizontalWithDuration(0.5)
+                    let gameOverScene = GameOverScene(size: self.size, won: false, level:2)
+                    self.view?.presentScene(gameOverScene, transition: reveal)
+            })
+    }
+    
     func didBeginContact(contact: SKPhysicsContact) {
         
         var firstBody: SKPhysicsBody
@@ -202,16 +239,24 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
+
         
         if ((firstBody.categoryBitMask & PhysicsCategory.Monster != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.Projectile != 0)) {
                 projectileDidCollideWithMonster(firstBody.node as SKSpriteNode, monster: secondBody.node as SKSpriteNode)
+        }else if((firstBody.categoryBitMask & PhysicsCategory.Thwomp != 0) &&
+            (secondBody.categoryBitMask & PhysicsCategory.Projectile != 0)) {
+                projectileDidCollideWithThwomp(firstBody.node as SKSpriteNode, thwomp: secondBody.node as SKSpriteNode)
+        }else if((firstBody.categoryBitMask & PhysicsCategory.Monster != 0) &&
+            (secondBody.categoryBitMask & PhysicsCategory.Thwomp != 0)) {
+                monsterDidCollideWithThwomp(firstBody.node as SKSpriteNode, thwomp: secondBody.node as SKSpriteNode)
+        }else if((firstBody.categoryBitMask & PhysicsCategory.Player != 0) &&
+            ((secondBody.categoryBitMask & PhysicsCategory.Monster != 0) || (secondBody.categoryBitMask & PhysicsCategory.Thwomp != 0))) {
+                nonProjectileDidCollideWithPlayer(firstBody.node as SKSpriteNode, player: secondBody.node as SKSpriteNode)
         }
+
         
     }
-    
- 
-    
     
     
 }

@@ -22,6 +22,7 @@ class GameMenuScene : SKScene {
         
         super.init(size: size)
         
+        
         backgroundColor = SKColor.whiteColor()
         
         let label = SKLabelNode(fontNamed: "Chalkduster")
@@ -72,8 +73,9 @@ class GameMenuScene : SKScene {
                 self.view?.presentScene(touchScene, transition: transition)
 
             } else if theNode.name == musicOffButton!.name{
-           
-                backgroundMusicPlayer.stop()
+                if(nil != backgroundMusicPlayer){
+                    backgroundMusicPlayer.stop()
+                }
                 
             }else if theNode.name == musicOnButton!.name{
 
