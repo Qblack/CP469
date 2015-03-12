@@ -18,12 +18,14 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
     // 1
     let player = SKSpriteNode(imageNamed: "player")
     
+    
     override func didMoveToView(view: SKView) {
         // 2
         backgroundColor = SKColor.whiteColor()
         
         // 3
         player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        player.name = "mario"
         // 4
         addChild(player)
         runAction(SKAction.repeatActionForever(
@@ -79,6 +81,19 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
         monster.runAction(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
+    }
+    
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        let touch = touches.anyObject() as UITouch
+        let touchLocation = touch.locationInNode(self)
+        let theNode = self.nodeAtPoint(touchLocation)
+        if( theNode.name == "mario"){
+            let actionMove = SKAction.moveTo(touchLocation, duration: 0.1)
+//            let actionMoveDone = SKAction.removeFromParent()
+            player.runAction(SKAction.sequence([actionMove]))
+        }
+        
+        
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
@@ -152,6 +167,8 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         }
         
     }
+    
+ 
     
     
     
