@@ -40,6 +40,7 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         player.physicsBody?.contactTestBitMask = PhysicsCategory.Thwomp | PhysicsCategory.Monster
         player.physicsBody?.affectedByGravity = false;
         player.physicsBody?.mass=0.0
+        player.physicsBody?.dynamic = false
 
         // 4
         addChild(player)
@@ -76,12 +77,13 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         let monster = SKSpriteNode(imageNamed: "monster")
         
         monster.physicsBody = SKPhysicsBody(rectangleOfSize: monster.size) // 1
-        monster.physicsBody?.dynamic = true // 2
         monster.physicsBody?.categoryBitMask = PhysicsCategory.Monster // 3
         monster.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile // 4
         monster.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
         monster.physicsBody?.mass = 0.0
         monster.physicsBody?.affectedByGravity = false
+        monster.physicsBody?.dynamic = true;
+        
         
         // Determine where to spawn the monster along the Y axis
         let actualY = random(min: monster.size.height/2, max: size.height - monster.size.height/2)
@@ -138,7 +140,6 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         let touch = touches.anyObject() as UITouch
         let touchLocation = touch.locationInNode(self)
         let theNode = self.nodeAtPoint(touchLocation)
-        println(theNode.name)
         if( theNode.name == "mario"){
             let actionMove = SKAction.moveTo(touchLocation, duration: 0.1)
             player.runAction(SKAction.sequence([actionMove]))
@@ -164,6 +165,7 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
         projectile.physicsBody?.affectedByGravity = false
         
         projectile.position = player.position
+        projectile.position.x = projectile.position.x + 16.0
         
         
         // 3 - Determine offset of location to projectile
@@ -210,8 +212,7 @@ class GameSceneLevel2: SKScene, SKPhysicsContactDelegate {
     
     func monsterDidCollideWithThwomp(monster: SKSpriteNode, thwomp:SKSpriteNode){
             //This was shown in class but i dont remember what was supposed to happen if the rock was on the ground.
-//        monster.removeFromParent()
-//        thwomp.removeFromParent()
+        monster.removeFromParent()
     }
     
     func nonProjectileDidCollideWithPlayer(item:SKSpriteNode, player:SKSpriteNode) {

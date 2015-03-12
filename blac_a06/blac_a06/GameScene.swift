@@ -96,6 +96,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         projectile.physicsBody?.collisionBitMask = PhysicsCategory.None
         projectile.physicsBody?.usesPreciseCollisionDetection = true
         projectile.position = player.position
+        projectile.position.x = projectile.position.x + 16.0
+
         
         // 3 - Determine offset of location to projectile
         let offset = touchLocation - projectile.position
