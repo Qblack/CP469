@@ -12,7 +12,6 @@
 		8A2EED931AC6EE4900B81F53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A2EED921AC6EE4900B81F53 /* Images.xcassets */; };
 		8A2EED961AC6EE4900B81F53 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2EED941AC6EE4900B81F53 /* LaunchScreen.xib */; };
 		8A2EEDA21AC6EE4900B81F53 /* SensorNetAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2EEDA11AC6EE4900B81F53 /* SensorNetAppTests.swift */; };
-		8A2EEDAC1AC707E300B81F53 /* SwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2EEDAB1AC707E300B81F53 /* SwitchViewController.swift */; };
 		A544ECBF1AC705BC0027F68C /* ModuleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544ECBD1AC705BC0027F68C /* ModuleInfo.swift */; };
 		A544ECC01AC705BC0027F68C /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544ECBE1AC705BC0027F68C /* Module.swift */; };
 		A544ECC21AC705DB0027F68C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544ECC11AC705DB0027F68C /* SwiftyJSON.swift */; };
@@ -20,6 +19,8 @@
 		A5E54DD01AC744DE0084C0C6 /* ModInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E54DCF1AC744DE0084C0C6 /* ModInfo.json */; };
 		A5E54DD21AC74C450084C0C6 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E54DD11AC74C450084C0C6 /* Storage.swift */; };
 		A5E54DD41AC753200084C0C6 /* Mods.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E54DD31AC753200084C0C6 /* Mods.json */; };
+		8A2EEDAC1AC707E300B81F53 /* SwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2EEDAB1AC707E300B81F53 /* SwitchViewController.swift */; };
+		8AFC53431AC7122000E1F509 /* RGBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFC53421AC7122000E1F509 /* RGBViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +43,6 @@
 		8A2EED9B1AC6EE4900B81F53 /* SensorNetAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SensorNetAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2EEDA01AC6EE4900B81F53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A2EEDA11AC6EE4900B81F53 /* SensorNetAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorNetAppTests.swift; sourceTree = "<group>"; };
-		8A2EEDAB1AC707E300B81F53 /* SwitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchViewController.swift; path = ../SwitchViewController.swift; sourceTree = "<group>"; };
 		A544ECBD1AC705BC0027F68C /* ModuleInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleInfo.swift; sourceTree = "<group>"; };
 		A544ECBE1AC705BC0027F68C /* Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		A544ECC11AC705DB0027F68C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -50,6 +50,8 @@
 		A5E54DCF1AC744DE0084C0C6 /* ModInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ModInfo.json; sourceTree = "<group>"; };
 		A5E54DD11AC74C450084C0C6 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A5E54DD31AC753200084C0C6 /* Mods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Mods.json; sourceTree = "<group>"; };
+		8A2EEDAB1AC707E300B81F53 /* SwitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchViewController.swift; path = ../SwitchViewController.swift; sourceTree = "<group>"; };
+		8AFC53421AC7122000E1F509 /* RGBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				8A2EED941AC6EE4900B81F53 /* LaunchScreen.xib */,
 				8A2EED891AC6EE4800B81F53 /* Supporting Files */,
 				A5E54DD11AC74C450084C0C6 /* Storage.swift */,
+				8AFC53421AC7122000E1F509 /* RGBViewController.swift */,
 			);
 			path = SensorNetApp;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AFC53431AC7122000E1F509 /* RGBViewController.swift in Sources */,
 				A544ECBF1AC705BC0027F68C /* ModuleInfo.swift in Sources */,
 				A544ECC41AC706010027F68C /* DataAccessLayer.swift in Sources */,
 				A544ECC01AC705BC0027F68C /* Module.swift in Sources */,
