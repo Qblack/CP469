@@ -16,12 +16,15 @@ class SwitchViewController: UIViewController {
     @IBOutlet weak var sensors: UILabel!
     @IBOutlet weak var switchToggle: UISwitch!
     
-   
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        var storage = Storage();
+        
+        let DAL = DataAccessLayer()
+        DAL.getModuleList()
+        DAL.getModuleInfo() //will specifiy id later
     }
 
     override func didReceiveMemoryWarning() {
