@@ -13,6 +13,7 @@
 		8A2EED931AC6EE4900B81F53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A2EED921AC6EE4900B81F53 /* Images.xcassets */; };
 		8A2EED961AC6EE4900B81F53 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2EED941AC6EE4900B81F53 /* LaunchScreen.xib */; };
 		8A2EEDA21AC6EE4900B81F53 /* SensorNetAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2EEDA11AC6EE4900B81F53 /* SensorNetAppTests.swift */; };
+		8A2EEDAC1AC707E300B81F53 /* SwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2EEDAB1AC707E300B81F53 /* SwitchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		8A2EED9B1AC6EE4900B81F53 /* SensorNetAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SensorNetAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2EEDA01AC6EE4900B81F53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A2EEDA11AC6EE4900B81F53 /* SensorNetAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorNetAppTests.swift; sourceTree = "<group>"; };
+		8A2EEDAB1AC707E300B81F53 /* SwitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchViewController.swift; path = ../SwitchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		8A2EED881AC6EE4800B81F53 /* SensorNetApp */ = {
 			isa = PBXGroup;
 			children = (
+				8A2EEDAB1AC707E300B81F53 /* SwitchViewController.swift */,
 				8A2EED8B1AC6EE4900B81F53 /* AppDelegate.swift */,
 				8A2EED8D1AC6EE4900B81F53 /* ViewController.swift */,
 				8A2EED8F1AC6EE4900B81F53 /* Main.storyboard */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A2EEDAC1AC707E300B81F53 /* SwitchViewController.swift in Sources */,
 				8A2EED8E1AC6EE4900B81F53 /* ViewController.swift in Sources */,
 				8A2EED8C1AC6EE4900B81F53 /* AppDelegate.swift in Sources */,
 			);
