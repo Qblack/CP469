@@ -86,7 +86,7 @@
                                     <action selector="toggleSwitch:" destination="elI-Ee-E4T" eventType="valueChanged" id="cXJ-hJ-bgT"/>
                                 </connections>
                             </switch>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="ryf-K7-syo">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="ryf-K7-syo">
                                 <rect key="frame" x="241" y="198" width="128" height="128"/>
                             </imageView>
                         </subviews>
