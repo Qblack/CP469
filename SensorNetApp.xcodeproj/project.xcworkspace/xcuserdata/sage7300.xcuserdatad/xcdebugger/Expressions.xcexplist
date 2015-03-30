@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "SensorNetApp.DataAccessLayer.parseModuleInfo (SensorNetApp.DataAccessLayer)(SensorNetApp.JSON) -&gt; ():DataAccessLayer.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "json[&quot;icon&quot;].stringValue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SensorNetApp.DataAccessLayer.parseModuleList (SensorNetApp.DataAccessLayer)(SensorNetApp.JSON) -&gt; ():DataAccessLayer.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "mod.arrayValue[0].stringValue.toInt()!">
+            </PersistentString>
+            <PersistentString
+               value = "mod.arrayValue[0].stringValue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SensorNetApp.SwitchViewController.(tester (SensorNetApp.SwitchViewController) -&gt; (Swift.String, param : Swift.String) -&gt; ()).(closure #1):SwitchViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Storage.modules">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SensorNetApp.DataAccessLayer.parseModuleInfo (SensorNetApp.DataAccessLayer)(ObjectiveC.NSString) -&gt; SensorNetApp.ModuleInfo:DataAccessLayer.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "json[&quot;querySuccess&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SensorNetApp.DataAccessLayer.(tester (SensorNetApp.DataAccessLayer) -&gt; () -&gt; ()).(closure #1):DataAccessLayer.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SensorNetApp.DataAccessLayer.parseModuleInfo (SensorNetApp.DataAccessLayer)(SensorNetApp.JSON) -&gt; SensorNetApp.ModuleInfo:DataAccessLayer.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "json[&quot;moduleId&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SensorNetApp.DataAccessLayer.parseModuleList (SensorNetApp.DataAccessLayer)(SensorNetApp.JSON) -&gt; Swift.Array&lt;SensorNetApp.Module&gt;:DataAccessLayer.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SensorNetApp.SwitchViewController.viewDidLoad (SensorNetApp.SwitchViewController)() -&gt; ():SwitchViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Storage.modulesInfo">
+            </PersistentString>
+            <PersistentString
+               value = "Storage.modules">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
