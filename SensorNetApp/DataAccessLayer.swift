@@ -13,7 +13,7 @@ class DataAccessLayer {
     var currentGetMethod = ""
     var dataStore = NSMutableData()
     
-    func getModuleInfo(success: ((data: NSData) -> Void)) {
+    func getModuleData(success: ((data: NSData) -> Void)) {
         //1
         //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             //2
@@ -41,43 +41,7 @@ class DataAccessLayer {
                     success(data: data)
             }
         //})
-    }
-
-    
-    func tester(res: NSData) {
-        let urlPath = "http://api.topcoder.com/v2/challenges?pageSize=2"
-        let url: NSURL = NSURL(string: urlPath)!
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
-            
-            if error != nil {
-                // If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
-            }
-            
-            var err: NSError?
-            var jsonResult = NSJSONSerialization.JSONObjectWithData(res, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
-            if err != nil {
-                // If there is an error parsing JSON, print it to the console
-                println("JSON Error \(err!.localizedDescription)")
-            }
-            
-            let json = JSON(jsonResult)
-            let count: Int? = json["data"].array?.count
-            println("found \(count!) challenges")
-            
-            if let ct = count {
-                for index in 0...ct-1 {
-                    // println(json["data"][index]["challengeName"].string!)
-                    if let name = json["data"][index]["challengeName"].string {
-                        println(name)
-                    }
-                    
-                }
-            }
-        })
-        task.resume()
-    }
+    }   
     
     func getModuleList(){
         var module = Module()
@@ -93,7 +57,7 @@ class DataAccessLayer {
     func getModuleInfo() {
         var moduleInfo = ModuleInfo()
         
-        self.getModuleInfo { (data) -> Void in
+        self.getModuleData { (data) -> Void in
             // Get #1 app name using SwiftyJSON
             let json = JSON(data: data)
             println(json)
@@ -142,52 +106,5 @@ class DataAccessLayer {
         moduleInfo.status.append(status)
         
         Storage.addModuleInfo(moduleInfo)
-    }
-    
-    func callGetAPI(method: String, param: String) {
-        //create url path to get APIs
-        var urlPath: String = "http://192.168.0.100:5000/" + method
-        
-        //for getModuleInfo
-        if (method == "getModuleInfo") {
-            currentGetMethod = "getModuleInfo"
-            urlPath += "?moduleID=" + param
-        }
-        else {
-            currentGetMethod = "getModuleList"
-        }
-        
-        println(urlPath)
-
-        var url: NSURL = NSURL(string: urlPath)!
-        var request: NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "GET"
-        var connection: NSURLConnection = NSURLConnection(request: request, delegate: self, startImmediately: true)!
-        connection.start()
-    }
-    
-    func connection(connection: NSURLConnection!, didReceiveData data: NSData!){
-        self.dataStore.appendData(data)
-    }
-    
-    func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
-        println("Connection failed. \(error.localizedDescription) \n")
-    }
-    
-    func connectionDidFinishLoading(connection: NSURLConnection!)
-    {
-        var results = NSString(data: dataStore, encoding: NSUTF8StringEncoding)
-        println(results!)
-        
-        if (currentGetMethod != "") {
-            //switch currentGetMethod {
-                //case "getModuleList":
-                    //parseModuleList(results!)
-                //case "getModuleInfo":
-                    //parseModuleInfo(results!)
-                //default:
-                    //var dumb = 1
-            //}
-        }
     }
 }
