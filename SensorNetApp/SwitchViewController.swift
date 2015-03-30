@@ -17,6 +17,8 @@ class SwitchViewController: UIViewController {
     @IBOutlet weak var sensors: UILabel!
     @IBOutlet weak var switchToggle: UISwitch!
     @IBOutlet weak var loader: UIImageView!
+    
+    var moduleInfo = ModuleInfo()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +79,7 @@ class SwitchViewController: UIViewController {
             let json = JSON(data:data)
             switch method {
             case "getModuleList":
-                DataAccessLayer.parseModuleList(json)
+                DataAccessLayer.parseModuleList(json)                
             case "getModuleInfo":
                 DataAccessLayer.parseModuleInfo(json)                
                 return

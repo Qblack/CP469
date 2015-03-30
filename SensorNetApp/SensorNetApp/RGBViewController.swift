@@ -15,6 +15,7 @@ class RGBViewController: UIViewController {
     @IBOutlet weak var sensorsLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    var moduleInfo = ModuleInfo()
 
     override func viewDidLoad() {
         super.viewDidLoad()
