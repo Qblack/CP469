@@ -28,7 +28,7 @@ struct Storage {
     }
     
     static func addModuleInfo(info: ModuleInfo) {
-        for i in 1...modules.count {
+        for i in 1...modules.count - 1 {
             if (modules[i].moduleId == info.moduleId) {
                 modulesInfo[i] = info
                 return

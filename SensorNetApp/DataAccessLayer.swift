@@ -71,39 +71,43 @@ class DataAccessLayer {
         
         for mod in moduleArray {
             var module = Module()
-            module.nodeId = mod[0].intValue
-            module.moduleId = mod[1].intValue
-            module.location = mod[2].stringValue
-            module.icon = mod[3].stringValue
+            module.nodeId = mod.arrayValue[0].stringValue
+            module.moduleId = mod.arrayValue[1].stringValue
+            module.location = mod.arrayValue[2].stringValue
+            module.icon = mod.arrayValue[3].stringValue
             
             Storage.addModule(module)
         }
     }
     
     func parseModuleInfo(json: JSON) {
+        
         var moduleInfo = ModuleInfo()
         moduleInfo.querySuccess = json["querySuccess"].boolValue
-        moduleInfo.moduleId = json["moduleID"].intValue
-        moduleInfo.Id = json["ID"].intValue
-        moduleInfo.nodeStatus = json["nodeStatus"].intValue
+        moduleInfo.moduleId = json["moduleID"].stringValue
+        moduleInfo.Id = json["ID"].stringValue
+        moduleInfo.nodeStatus = json["nodeStatus"].stringValue
         moduleInfo.name = json["name"].stringValue
         moduleInfo.description = json["description"].stringValue
-        moduleInfo.moduleType = json["moduleType"].intValue
+        moduleInfo.moduleType = json["moduleType"].stringValue
         moduleInfo.icon = json["icon"].stringValue
-        moduleInfo.updateInterval = json["updateInterval"].intValue
-        moduleInfo.timestamp = json["timestamp"].intValue
-        moduleInfo.moduleStatus = json["moduleStatus"].intValue
+        moduleInfo.updateInterval = json["updateInterval"].stringValue
+        moduleInfo.timestamp = json["timestamp"].stringValue
+        moduleInfo.moduleStatus = json["moduleStatus"].stringValue
         moduleInfo.moduleFile = json["moduleFile"].stringValue
-        var command = json["commands"][0].intValue
-        moduleInfo.commands.append(command)
-        var lens = json["dataLens"][0].intValue
-        moduleInfo.dataLens.append(lens)
-        var value = json["values"][0].intValue
-        moduleInfo.values.append(value)
-        var type = json["types"][0].intValue
-        moduleInfo.types.append(type)
-        var status = json["status"][0].intValue
-        moduleInfo.status.append(status)
+        //var command = json["commands"][0].intValue
+        //moduleInfo.commands.append(command)
+        //var lens = json["dataLens"][0].intValue
+        //moduleInfo.dataLens.append(lens)
+        /*FIX THIS*/
+        for i in 1...json["values"].arrayValue.count - 1 {
+            var value = json["values"].arrayValue[i].stringValue
+            moduleInfo.values.append(value)
+        }
+        //var type = json["types"][0].intValue
+        //moduleInfo.types.append(type)
+        //var status = json["status"][0].intValue
+        //moduleInfo.status.append(status)
         
         Storage.addModuleInfo(moduleInfo)
     }
