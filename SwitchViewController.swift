@@ -17,9 +17,6 @@ class SwitchViewController: UIViewController {
     @IBOutlet weak var sensors: UILabel!
     @IBOutlet weak var switchToggle: UISwitch!
     @IBOutlet weak var loader: UIImageView!
-    
-    let DAL = DataAccessLayer()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,20 +29,17 @@ class SwitchViewController: UIViewController {
         }
         loader.animationDuration = 1
         
-        //initialize storage
-        var storage = Storage();
-        
         loader.startAnimating()
         loader.hidden = false
         
-        self.tester("getModuleList", param: "")
+        self.getDataFromService("getModuleList", param: "")
         //DAL.getModuleList()
         //DAL.getModuleInfo() //will specifiy id later
     }
     
 ///////////////////////////////////////////////////////////
     
-    func tester(method: String, param: String) {
+    func getDataFromService(method: String, param: String) {
         
         //create url path to get APIs
         var urlPath: String = "http://192.168.0.100:5000/" + method
@@ -83,14 +77,9 @@ class SwitchViewController: UIViewController {
             let json = JSON(data:data)
             switch method {
             case "getModuleList":
-                self.DAL.parseModuleList(json)
-                for mod in 0...Storage.modules.count - 1 {
-                    let modId = Storage.modules[mod].moduleId
-                    println(modId)
-                    self.tester("getModuleInfo", param: String(modId))
-                }
+                DataAccessLayer.parseModuleList(json)
             case "getModuleInfo":
-                self.DAL.parseModuleInfo(json)                
+                DataAccessLayer.parseModuleInfo(json)                
                 return
             default:
                 var dumb = 1
