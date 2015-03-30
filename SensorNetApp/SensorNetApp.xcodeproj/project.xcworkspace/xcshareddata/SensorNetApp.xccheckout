@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>60DA4AF4-FC1E-4590-8911-AF71DFBB93C1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SensorNetApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>779FF8D2A52F5229B21DC1E96ECEDF14D27601A3</key>
+		<string>https://github.com/Qblack/CP469.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SensorNetApp/SensorNetApp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>779FF8D2A52F5229B21DC1E96ECEDF14D27601A3</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Qblack/CP469.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>779FF8D2A52F5229B21DC1E96ECEDF14D27601A3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>779FF8D2A52F5229B21DC1E96ECEDF14D27601A3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CP469</string>
+		</dict>
+	</array>
+</dict>
+</plist>
