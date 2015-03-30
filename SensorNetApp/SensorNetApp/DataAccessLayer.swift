@@ -8,12 +8,16 @@
 
 import Foundation
 
-class DataAccessLayer {
+struct DataAccessLayer {
     
-    var currentGetMethod = ""
-    var dataStore = NSMutableData()
+    static var currentGetMethod = ""
+    static var dataStore = NSMutableData()
     
-    func getModuleData(success: ((data: NSData) -> Void)) {
+    init() {
+        
+    }
+    
+    static func getModuleData(success: ((data: NSData) -> Void)) {
         //1
         //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             //2
@@ -28,7 +32,7 @@ class DataAccessLayer {
         //})
     }
     
-    func getModules(success: ((data: NSData) -> Void)) {
+    static func getModules(success: ((data: NSData) -> Void)) {
         //1
         //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             //2
@@ -43,7 +47,7 @@ class DataAccessLayer {
         //})
     }   
     
-    func getModuleList(){
+    static func getModuleList(){
         var module = Module()
         
         self.getModules { (data) -> Void in
@@ -54,7 +58,7 @@ class DataAccessLayer {
         }
     }
     
-    func getModuleInfo() {
+    static func getModuleInfo() {
         var moduleInfo = ModuleInfo()
         
         self.getModuleData { (data) -> Void in
@@ -65,7 +69,7 @@ class DataAccessLayer {
         }
     }
     
-    func parseModuleList(json: JSON) {
+    static func parseModuleList(json: JSON) {
         let moduleArray = json.arrayValue
         var modules = [Module]()
         
@@ -74,13 +78,14 @@ class DataAccessLayer {
             module.nodeId = mod.arrayValue[0].stringValue
             module.moduleId = mod.arrayValue[1].stringValue
             module.location = mod.arrayValue[2].stringValue
-            module.icon = mod.arrayValue[3].stringValue
+            module.name = mod.arrayValue[3].stringValue
+            module.icon = mod.arrayValue[4].stringValue
             
             Storage.addModule(module)
         }
     }
     
-    func parseModuleInfo(json: JSON) {
+    static func parseModuleInfo(json: JSON) {
         
         var moduleInfo = ModuleInfo()
         moduleInfo.querySuccess = json["querySuccess"].boolValue
