@@ -1,1 +1,5 @@
 .DS_Store
+SensorNetApp/SensorNetApp.xcodeproj/project.xcworkspace
+SensorNetApp/SensorNetApp.xcodeproj/xcuserdata
+SensorNetApp/SensorNetApp.xcodeproj/project.xcworkspace/xcuserdata*
+*.orig
