@@ -58,6 +58,18 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let moduleInfo = Storage.modulesInfo[indexPath.row]
+        if (moduleInfo.moduleType == String(ModuleType.RGB.rawValue)){
+            self.performSegueWithIdentifier("rgb", sender:tableView.cellForRowAtIndexPath(indexPath))
+        }else if(moduleInfo.moduleType == String(ModuleType.LIGHT.rawValue)){
+            self.performSegueWithIdentifier("light", sender:tableView.cellForRowAtIndexPath(indexPath))
+        }else if(moduleInfo.moduleType == String(ModuleType.ENVIRONMENT.rawValue)){
+            self.performSegueWithIdentifier("environment", sender:tableView.cellForRowAtIndexPath(indexPath))
+        }
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -130,6 +142,10 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
             switch method {
             case "getModuleList":
                 DataAccessLayer.parseModuleList(json)
+                for mod in 0...Storage.modules.count - 1 {
+                    let modId = Storage.modules[mod].moduleId
+                    self.getDataFromService("getModuleInfo", param: modId)
+                }
             case "getModuleInfo":
                 DataAccessLayer.parseModuleInfo(json)
                 return
@@ -167,15 +183,17 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         let indexPath = tableView.indexPathForCell(sender as UITableViewCell)!
         let moduleInfo = Storage.modulesInfo[indexPath.row]
         
-        
-        
-        if (segue.identifier == "rgbSegue"){
+        if (segue.identifier == "rgb") {
             let destinationVC = segue.destinationViewController as RGBViewController;
-        }else if(segue.identifier=="switchSegue"){
+            destinationVC.moduleInfo = moduleInfo
+        }
+        else if(segue.identifier == "light") {
             let destinationVC = segue.destinationViewController as SwitchViewController;
-        }else if(segue.identifier == "temperatureSegue"){
+            destinationVC.moduleInfo = moduleInfo
+        }
+        else if(segue.identifier == "environment") {
             let destinationVC = segue.destinationViewController as TemperatureViewController;
+            destinationVC.moduleInfo = moduleInfo
         }
     }
-
 }

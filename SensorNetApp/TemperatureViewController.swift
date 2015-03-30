@@ -17,10 +17,17 @@ class TemperatureViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
     
+    var moduleInfo = ModuleInfo()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        nodeIdLabel.text = moduleInfo.Id
+        moduleIdLabel.text = moduleInfo.moduleId
+        sensorsLabel.text = moduleInfo.nodeStatus
+        descLabel.text = moduleInfo.description
+        temperatureLabel.text = moduleInfo.values[1]
+        humidityLabel.text = moduleInfo.values[0]
+        
     }
 
     override func didReceiveMemoryWarning() {
