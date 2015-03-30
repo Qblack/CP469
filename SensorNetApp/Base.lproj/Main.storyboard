@@ -86,18 +86,23 @@
                                     <action selector="toggleSwitch:" destination="elI-Ee-E4T" eventType="valueChanged" id="cXJ-hJ-bgT"/>
                                 </connections>
                             </switch>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="ryf-K7-syo">
+                                <rect key="frame" x="241" y="198" width="128" height="128"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.24487058079999999" green="0.21151561720000001" blue="0.23931958710000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.23315183080808077" green="0.23315183080808077" blue="0.23315183080808077" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="RwP-zh-h7S" secondAttribute="centerY" id="5nw-pn-933"/>
                             <constraint firstItem="8zt-uL-CqJ" firstAttribute="top" secondItem="hwe-xW-BH4" secondAttribute="bottom" constant="20" id="6sL-mS-Bho"/>
                             <constraint firstItem="LDg-LP-VqX" firstAttribute="leading" secondItem="hwe-xW-BH4" secondAttribute="trailing" constant="50" id="9l9-71-ad0"/>
                             <constraint firstItem="8zt-uL-CqJ" firstAttribute="leading" secondItem="mYk-QQ-Hwa" secondAttribute="leadingMargin" constant="60" id="Fdn-NM-joP"/>
+                            <constraint firstAttribute="centerX" secondItem="ryf-K7-syo" secondAttribute="centerX" constant="-5" id="JEk-hc-Rgq"/>
                             <constraint firstItem="IOi-vA-iKo" firstAttribute="top" secondItem="hhs-MR-bqG" secondAttribute="bottom" constant="20" id="NId-7T-zgb"/>
                             <constraint firstItem="yts-7P-7HC" firstAttribute="leading" secondItem="mYk-QQ-Hwa" secondAttribute="leadingMargin" constant="60" id="Qdy-14-Jdg"/>
                             <constraint firstItem="NOO-VA-DYC" firstAttribute="top" secondItem="wiO-9V-Way" secondAttribute="bottom" constant="30" id="X6v-VY-F1F"/>
                             <constraint firstItem="hwe-xW-BH4" firstAttribute="top" secondItem="NOO-VA-DYC" secondAttribute="bottom" constant="20" id="bm2-PL-R5E"/>
                             <constraint firstItem="lbt-py-q6q" firstAttribute="leading" secondItem="NOO-VA-DYC" secondAttribute="trailing" constant="50" id="ct0-Iu-rzy"/>
+                            <constraint firstAttribute="centerY" secondItem="ryf-K7-syo" secondAttribute="centerY" constant="38" id="fXv-Yg-E4y"/>
                             <constraint firstItem="IOi-vA-iKo" firstAttribute="leading" secondItem="yts-7P-7HC" secondAttribute="trailing" constant="50" id="iTd-4q-zKN"/>
                             <constraint firstItem="hwe-xW-BH4" firstAttribute="leading" secondItem="mYk-QQ-Hwa" secondAttribute="leadingMargin" constant="60" id="rzB-3B-W80"/>
                             <constraint firstItem="yts-7P-7HC" firstAttribute="top" secondItem="8zt-uL-CqJ" secondAttribute="bottom" constant="20" id="t9G-y5-pxJ"/>
@@ -111,6 +116,7 @@
                     </view>
                     <connections>
                         <outlet property="descLabel" destination="lbt-py-q6q" id="VdL-0h-mN7"/>
+                        <outlet property="loader" destination="ryf-K7-syo" id="NCL-Px-Fr0"/>
                         <outlet property="moduleId" destination="hhs-MR-bqG" id="tz2-6d-ih7"/>
                         <outlet property="nodeId" destination="LDg-LP-VqX" id="RwP-24-BNT"/>
                         <outlet property="sensors" destination="IOi-vA-iKo" id="kg1-N8-E8R"/>
@@ -677,4 +683,7 @@
             <point key="canvasLocation" x="-108" y="82"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1" width="128" height="128"/>
+    </resources>
 </document>
