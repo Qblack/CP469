@@ -9,8 +9,8 @@
 import Foundation
 
 class Module {
-    var nodeId = -1
-    var moduleId = -1
+    var nodeId = "-1"
+    var moduleId = "-1"
     var location = ""
     var name = ""
     var icon = ""

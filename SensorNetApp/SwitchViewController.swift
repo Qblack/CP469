@@ -59,12 +59,12 @@ class SwitchViewController: UIViewController {
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
-        session.configuration.timeoutIntervalForRequest = 10
+        session.configuration.timeoutIntervalForRequest = 30
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             
             //check for errors
             if error != nil {
-                println(error.localizedDescription)
+                println(error)
                 //call main thread to do loady stuff
                 dispatch_async(dispatch_get_main_queue(), {
                     self.loader.stopAnimating()
@@ -79,20 +79,25 @@ class SwitchViewController: UIViewController {
                 return
             }
             
-            //check for valid JSON
-            var err: NSError?
-            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
-            if err != nil {
-                // If there is an error parsing JSON, print it to the console
-                println("JSON Error \(err!.localizedDescription)")
-            }
-            
             //call to parse the JSON
-            let json = JSON(jsonResult)
             switch method {
             case "getModuleList":
+                let json = JSON(data:data)
                 self.DAL.parseModuleList(json)
+                for mod in 1...Storage.modules.count - 1 {
+                    let modId = Storage.modules[mod].moduleId
+                    println(modId)
+                    self.tester("getModuleInfo", param: String(modId))
+                }
             case "getModuleInfo":
+                //check for valid JSON
+                var err: NSError?
+                var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+                if err != nil {
+                    //If there is an error parsing JSON, print it to the console
+                    println("JSON Error \(err!.localizedDescription)")
+                }
+                let json = JSON(jsonResult)
                 self.DAL.parseModuleInfo(json)
             default:
                 var dumb = 1
