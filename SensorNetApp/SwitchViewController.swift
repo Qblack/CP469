@@ -35,6 +35,7 @@ class SwitchViewController: UIViewController {
         //initialize storage
         var storage = Storage();
         
+        loader.startAnimating()
         loader.hidden = false
         
         self.tester("getModuleList", param: "")
@@ -45,7 +46,6 @@ class SwitchViewController: UIViewController {
 ///////////////////////////////////////////////////////////
     
     func tester(method: String, param: String) {
-        loader.startAnimating()
         
         //create url path to get APIs
         var urlPath: String = "http://192.168.0.100:5000/" + method
@@ -80,34 +80,37 @@ class SwitchViewController: UIViewController {
             }
             
             //call to parse the JSON
+            let json = JSON(data:data)
             switch method {
             case "getModuleList":
-                let json = JSON(data:data)
                 self.DAL.parseModuleList(json)
-                for mod in 1...Storage.modules.count - 1 {
+                for mod in 0...Storage.modules.count - 1 {
                     let modId = Storage.modules[mod].moduleId
                     println(modId)
                     self.tester("getModuleInfo", param: String(modId))
                 }
             case "getModuleInfo":
-                //check for valid JSON
-                var err: NSError?
-                var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
-                if err != nil {
-                    //If there is an error parsing JSON, print it to the console
-                    println("JSON Error \(err!.localizedDescription)")
-                }
-                let json = JSON(jsonResult)
-                self.DAL.parseModuleInfo(json)
+                self.DAL.parseModuleInfo(json)                
+                return
             default:
                 var dumb = 1
             }
             
+            //this is so you can see the loady. Otherwise too fast
+            sleep(5)
+            
             //call main thread to do loady stuff
             dispatch_async(dispatch_get_main_queue(), {
                 self.loader.stopAnimating()
+                self.loader.hidden = true
+                
+                //DELETE ME LATER
+                let alert = UIAlertController(title: "Alert", message:
+                    "Successfully retrieved data.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alert, animated: true, completion: nil)
             })
-            
         })
         task.resume()
     }

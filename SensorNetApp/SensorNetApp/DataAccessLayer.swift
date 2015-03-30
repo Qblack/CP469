@@ -100,7 +100,7 @@ class DataAccessLayer {
         //var lens = json["dataLens"][0].intValue
         //moduleInfo.dataLens.append(lens)
         /*FIX THIS*/
-        for i in 1...json["values"].arrayValue.count - 1 {
+        for i in 0...json["values"].arrayValue.count - 1 {
             var value = json["values"].arrayValue[i].stringValue
             moduleInfo.values.append(value)
         }
