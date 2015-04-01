@@ -24,6 +24,7 @@
 		A5E54DD21AC74C450084C0C6 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E54DD11AC74C450084C0C6 /* Storage.swift */; };
 		A5E54DD41AC753200084C0C6 /* Mods.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E54DD31AC753200084C0C6 /* Mods.json */; };
 		A5EAB0451AC9F63900BA6DAE /* ModuleTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EAB0441AC9F63900BA6DAE /* ModuleTypeEnum.swift */; };
+		A5EFD7DD1ACC92E600CEDC44 /* ModuleStatusEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFD7DC1ACC92E600CEDC44 /* ModuleStatusEnum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		A5E54DD11AC74C450084C0C6 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A5E54DD31AC753200084C0C6 /* Mods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Mods.json; sourceTree = "<group>"; };
 		A5EAB0441AC9F63900BA6DAE /* ModuleTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleTypeEnum.swift; sourceTree = "<group>"; };
+		A5EFD7DC1ACC92E600CEDC44 /* ModuleStatusEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleStatusEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,17 +107,18 @@
 				A544ECBD1AC705BC0027F68C /* ModuleInfo.swift */,
 				A544ECC31AC706010027F68C /* DataAccessLayer.swift */,
 				A544ECBE1AC705BC0027F68C /* Module.swift */,
-				8A2EEDAB1AC707E300B81F53 /* SwitchViewController.swift */,
 				8A2EED8B1AC6EE4900B81F53 /* AppDelegate.swift */,
 				8A2EED8F1AC6EE4900B81F53 /* Main.storyboard */,
 				8A2EED921AC6EE4900B81F53 /* Images.xcassets */,
 				8A2EED941AC6EE4900B81F53 /* LaunchScreen.xib */,
 				8A2EED891AC6EE4800B81F53 /* Supporting Files */,
 				A5E54DD11AC74C450084C0C6 /* Storage.swift */,
+				8A2EEDAB1AC707E300B81F53 /* SwitchViewController.swift */,
 				8AFC53421AC7122000E1F509 /* RGBViewController.swift */,
 				8ADE99811AC759DD00BC7D76 /* TemperatureViewController.swift */,
 				8AE7789B1AC9EB2700A2356E /* RootTableViewController.swift */,
 				A5EAB0441AC9F63900BA6DAE /* ModuleTypeEnum.swift */,
+				A5EFD7DC1ACC92E600CEDC44 /* ModuleStatusEnum.swift */,
 			);
 			path = SensorNetApp;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				A544ECC21AC705DB0027F68C /* SwiftyJSON.swift in Sources */,
 				A5E54DD21AC74C450084C0C6 /* Storage.swift in Sources */,
 				8AE7789C1AC9EB2700A2356E /* RootTableViewController.swift in Sources */,
+				A5EFD7DD1ACC92E600CEDC44 /* ModuleStatusEnum.swift in Sources */,
 				8A2EED8C1AC6EE4900B81F53 /* AppDelegate.swift in Sources */,
 				A5EAB0451AC9F63900BA6DAE /* ModuleTypeEnum.swift in Sources */,
 				8ADE99821AC759DD00BC7D76 /* TemperatureViewController.swift in Sources */,

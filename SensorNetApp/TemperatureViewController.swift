@@ -97,9 +97,6 @@ class TemperatureViewController: UIViewController {
             let json = JSON(data:data)
             DataAccessLayer.parseModuleInfo(json)
             
-            //this is so you can see the loady. Otherwise too fast
-            sleep(3)
-            
             //call main thread to do loady stuff
             dispatch_async(dispatch_get_main_queue(), {
                 self.refreshIcon.hidden = false
