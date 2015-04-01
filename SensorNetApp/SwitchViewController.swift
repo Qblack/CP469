@@ -17,96 +17,21 @@ class SwitchViewController: UIViewController {
     @IBOutlet weak var sensors: UILabel!
     @IBOutlet weak var switchToggle: UISwitch!
     @IBOutlet weak var loader: UIImageView!
+    @IBOutlet weak var header: UINavigationItem!
     
     var moduleInfo = ModuleInfo()
+    var pageTitle = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //setup the loader
-        loader.animationImages = [UIImage]()
-        for var i = 1; i <= 8; i++ {
-            var image = String(i)
-            loader.animationImages?.append(UIImage(named: image)!)
-        }
-        loader.animationDuration = 1
-        
-        loader.startAnimating()
-        loader.hidden = false
-        
-        self.getDataFromService("getModuleList", param: "")
-        //DAL.getModuleList()
-        //DAL.getModuleInfo() //will specifiy id later
+        header.title = pageTitle
+        nodeId.text = moduleInfo.Id
+        moduleId.text = moduleInfo.moduleId
+        sensors.text = moduleInfo.nodeStatus
+        descLabel.numberOfLines = 0
+        descLabel.text = moduleInfo.description
     }
     
-///////////////////////////////////////////////////////////
-    
-    func getDataFromService(method: String, param: String) {
-        
-        //create url path to get APIs
-        var urlPath: String = "http://192.168.0.100:5000/" + method
-        
-        //for getModuleInfo
-        if (method == "getModuleInfo") {
-            urlPath += "?moduleID=" + param
-        }
-        
-        println(urlPath)
-        
-        let url: NSURL = NSURL(string: urlPath)!
-        let session = NSURLSession.sharedSession()
-        session.configuration.timeoutIntervalForRequest = 30
-        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
-            
-            //check for errors
-            if error != nil {
-                println(error)
-                //call main thread to do loady stuff
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.loader.stopAnimating()
-                    self.loader.hidden = true
-                    
-                    let alert = UIAlertController(title: "Error", message:
-                        error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
-                    
-                    self.presentViewController(alert, animated: true, completion: nil)
-                })
-                return
-            }
-            
-            //call to parse the JSON
-            let json = JSON(data:data)
-            switch method {
-            case "getModuleList":
-                DataAccessLayer.parseModuleList(json)                
-            case "getModuleInfo":
-                DataAccessLayer.parseModuleInfo(json)                
-                return
-            default:
-                var dumb = 1
-            }
-            
-            //this is so you can see the loady. Otherwise too fast
-            sleep(5)
-            
-            //call main thread to do loady stuff
-            dispatch_async(dispatch_get_main_queue(), {
-                self.loader.stopAnimating()
-                self.loader.hidden = true
-                
-                //DELETE ME LATER
-                let alert = UIAlertController(title: "Alert", message:
-                    "Successfully retrieved data.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
-                
-                self.presentViewController(alert, animated: true, completion: nil)
-            })
-        })
-        task.resume()
-    }
-////////////////////////////////////////////////////////////
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

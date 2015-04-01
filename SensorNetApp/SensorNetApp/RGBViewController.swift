@@ -14,13 +14,28 @@ class RGBViewController: UIViewController {
     @IBOutlet weak var moduleIdLabel: UILabel!
     @IBOutlet weak var sensorsLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var header: UINavigationItem!
+    
+    
+    @IBOutlet weak var redSlider: UISlider!
+    @IBOutlet weak var greenSlider: UISlider!
+    @IBOutlet weak var blueSlider: UISlider!
+    @IBOutlet weak var colorShow: UILabel!
     
     var moduleInfo = ModuleInfo()
+    var pageTitle = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        header.title = pageTitle
+        nodeIdLabel.text = moduleInfo.Id
+        moduleIdLabel.text = moduleInfo.moduleId
+        sensorsLabel.text = moduleInfo.nodeStatus
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.text = moduleInfo.description
+        
+        let color = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
+        colorShow.backgroundColor = color
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +54,26 @@ class RGBViewController: UIViewController {
     }
     */
     
+    @IBAction func redSliderChanged(sender: UISlider) {
+        displayColors()
+    }
+    
+    @IBAction func greenSliderChanged(sender: UISlider) {
+        displayColors()
+    }
+    
+    @IBAction func blueSliderChanged(sender: UISlider) {
+        displayColors()
+    }
+    
+    func displayColors(){
+        let red = CGFloat(redSlider.value)
+        let blue = CGFloat(blueSlider.value)
+        let green = CGFloat(greenSlider.value)
+        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        
+        colorShow.backgroundColor = color
+    }
 
     @IBAction func handleColourChange(sender: UIButton) {
          println(sender.backgroundColor)
@@ -49,13 +84,12 @@ class RGBViewController: UIViewController {
         var alpha: CGFloat = 0.0
         
         colour.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        redSlider.value = Float(red)
+        greenSlider.value = Float(green)
+        blueSlider.value = Float(blue)
         
-        println(red)
-        println(green)
-        println(blue)
-        
-        
-        
+        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        colorShow.backgroundColor = color
     }
     
 
