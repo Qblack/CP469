@@ -18,6 +18,8 @@ class SwitchViewController: UIViewController {
     @IBOutlet weak var switchToggle: UISwitch!
     @IBOutlet weak var loader: UIImageView!
     @IBOutlet weak var header: UINavigationItem!
+    @IBOutlet weak var offLabel: UILabel!
+    @IBOutlet weak var onLabel: UILabel!
     
     var moduleInfo = ModuleInfo()
     var pageTitle = ""
@@ -30,17 +32,25 @@ class SwitchViewController: UIViewController {
         sensors.text = moduleInfo.nodeStatus
         descLabel.numberOfLines = 0
         descLabel.text = moduleInfo.description
+        
+        onLabel.layer.borderColor = UIColor.whiteColor().CGColor
+        offLabel.layer.borderColor = UIColor.whiteColor().CGColor
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func toggleSwitch(sender: UISwitch) {
-        
+
+    @IBAction func toggleOff(sender: UIButton) {
+        onLabel.layer.borderWidth = 0
+        offLabel.layer.borderWidth = 3.0
     }
 
+    @IBAction func toggleOn(sender: UIButton) {
+        onLabel.layer.borderWidth = 3.0
+        offLabel.layer.borderWidth = 0
+    }
     /*
     // MARK: - Navigation
 

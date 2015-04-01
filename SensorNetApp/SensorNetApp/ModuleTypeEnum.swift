@@ -6,6 +6,6 @@
 //  Copyright (c) 2015 Quinton and Brian. All rights reserved.
 //
 
-enum ModuleType : Int {
+enum ModuleType: Int {
     case ENVIRONMENT = 0, RGB, LIGHT, UNDEFINED
 }
