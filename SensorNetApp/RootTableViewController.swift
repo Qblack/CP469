@@ -53,7 +53,20 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         var module = Storage.modules[indexPath.row]
-        cell.textLabel?.text = module.name
+        
+        let text = module.name
+        let font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        let textColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        let attributes = [
+            NSForegroundColorAttributeName : textColor,
+            NSFontAttributeName : font,
+            NSTextEffectAttributeName : NSTextEffectLetterpressStyle
+        ]
+        let attributedString = NSAttributedString(string: text, attributes: attributes)
+        
+        cell.textLabel?.attributedText = attributedString
+        
+        //cell.textLabel?.text = module.name
         
         return cell
     }
@@ -61,12 +74,27 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let moduleInfo = Storage.modulesInfo[indexPath.row]
-        if (moduleInfo.moduleType == String(ModuleType.RGB.rawValue)){
-            self.performSegueWithIdentifier("rgb", sender:tableView.cellForRowAtIndexPath(indexPath))
-        }else if(moduleInfo.moduleType == String(ModuleType.LIGHT.rawValue)){
-            self.performSegueWithIdentifier("light", sender:tableView.cellForRowAtIndexPath(indexPath))
-        }else if(moduleInfo.moduleType == String(ModuleType.ENVIRONMENT.rawValue)){
+//        if (moduleInfo.moduleType == String(ModuleType.RGB.rawValue)){
+//            self.performSegueWithIdentifier("rgb", sender:tableView.cellForRowAtIndexPath(indexPath))
+//        }
+//        else if(moduleInfo.moduleType == String(ModuleType.LIGHT.rawValue)){
+//            self.performSegueWithIdentifier("light", sender:tableView.cellForRowAtIndexPath(indexPath))
+//        }
+//        else if(moduleInfo.moduleType == String(ModuleType.ENVIRONMENT.rawValue)){
+//            self.performSegueWithIdentifier("environment", sender:tableView.cellForRowAtIndexPath(indexPath))
+//        }
+        
+        //just in case we cant change the module type use the moduleId instead
+        switch (moduleInfo.moduleId) {
+        case "858050250518":
             self.performSegueWithIdentifier("environment", sender:tableView.cellForRowAtIndexPath(indexPath))
+        case "870985681430":
+            self.performSegueWithIdentifier("rgb", sender:tableView.cellForRowAtIndexPath(indexPath))
+            
+        case "918415594774":
+            self.performSegueWithIdentifier("light", sender:tableView.cellForRowAtIndexPath(indexPath))
+        default:
+            var dumb = 1
         }
     }
     
@@ -185,14 +213,17 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         
         if (segue.identifier == "rgb") {
             let destinationVC = segue.destinationViewController as RGBViewController;
+            destinationVC.pageTitle = "RGB Light"
             destinationVC.moduleInfo = moduleInfo
         }
         else if(segue.identifier == "light") {
             let destinationVC = segue.destinationViewController as SwitchViewController;
+            destinationVC.pageTitle = "Main Light"
             destinationVC.moduleInfo = moduleInfo
         }
         else if(segue.identifier == "environment") {
             let destinationVC = segue.destinationViewController as TemperatureViewController;
+            destinationVC.pageTitle = "Environment"
             destinationVC.moduleInfo = moduleInfo
         }
     }

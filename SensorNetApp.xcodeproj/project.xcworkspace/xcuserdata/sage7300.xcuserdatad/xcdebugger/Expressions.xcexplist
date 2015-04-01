@@ -14,10 +14,10 @@
          contextName = "SensorNetApp.DataAccessLayer.parseModuleList (SensorNetApp.DataAccessLayer)(SensorNetApp.JSON) -&gt; ():DataAccessLayer.swift">
          <PersistentStrings>
             <PersistentString
-               value = "mod.arrayValue[0].stringValue.toInt()!">
+               value = "mod.arrayValue[0].stringValue">
             </PersistentString>
             <PersistentString
-               value = "mod.arrayValue[0].stringValue">
+               value = "mod.arrayValue[0].stringValue.toInt()!">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -26,6 +26,17 @@
          <PersistentStrings>
             <PersistentString
                value = "Storage.modules">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SensorNetApp.TemperatureViewController.(getDataFromService (SensorNetApp.TemperatureViewController) -&gt; () -&gt; ()).(closure #1).(closure #2):TemperatureViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "mod.moduleId">
+            </PersistentString>
+            <PersistentString
+               value = "self.moduleInfo.moduleId">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -50,6 +61,17 @@
       </ContextState>
       <ContextState
          contextName = "SensorNetApp.DataAccessLayer.parseModuleList (SensorNetApp.DataAccessLayer)(SensorNetApp.JSON) -&gt; Swift.Array&lt;SensorNetApp.Module&gt;:DataAccessLayer.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SensorNetApp.TemperatureViewController.viewDidLoad (SensorNetApp.TemperatureViewController)() -&gt; ():TemperatureViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "temperatureLabel.text">
+            </PersistentString>
+            <PersistentString
+               value = "humidityLabel.text">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "SensorNetApp.SwitchViewController.viewDidLoad (SensorNetApp.SwitchViewController)() -&gt; ():SwitchViewController.swift">
