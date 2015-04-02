@@ -21,6 +21,7 @@ class SwitchViewController: UIViewController {
     @IBOutlet weak var offLabel: UILabel!
     @IBOutlet weak var onLabel: UILabel!
     
+    let updateUrl = "http://192.168.0.100:5000/updateControl"
     var moduleInfo = ModuleInfo()
     var pageTitle = ""
 
@@ -45,12 +46,40 @@ class SwitchViewController: UIViewController {
     @IBAction func toggleOff(sender: UIButton) {
         onLabel.layer.borderWidth = 0
         offLabel.layer.borderWidth = 3.0
+        
+        var params: Dictionary<String, NSObject> = ["moduleID":moduleInfo.moduleId, "commands":[16], "values":[0]]
+        updateControl(params)
     }
 
     @IBAction func toggleOn(sender: UIButton) {
         onLabel.layer.borderWidth = 3.0
         offLabel.layer.borderWidth = 0
+        
+        var params: Dictionary<String, NSObject> = ["moduleID":moduleInfo.moduleId, "commands":[16], "values":[1]]
+        updateControl(params)
     }
+    
+    func updateControl(params : Dictionary<String, NSObject>) {
+        var req = NSMutableURLRequest(URL: NSURL(string: updateUrl)!)
+        var session = NSURLSession.sharedSession()
+        req.HTTPMethod = "POST"
+        
+        var err: NSError?
+        req.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        req.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var task = session.dataTaskWithRequest(req, completionHandler: {data, response, error -> Void in
+            //print that we toggled the light
+            //we only ever get back 1, so there's nothing we can do or know
+            //if it didn't actually change the light
+            println("Toggled main light.")
+        })
+        
+        task.resume()
+    }
+    
+    
     /*
     // MARK: - Navigation
 
