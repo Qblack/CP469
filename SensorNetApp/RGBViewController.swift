@@ -23,6 +23,24 @@ class RGBViewController: UIViewController {
     let updateUrlFast = "http://192.168.0.100:5000/updateControlFast"
     var moduleInfo = ModuleInfo()
     var pageTitle = ""
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+        if motion == .MotionShake {
+            //FIXlet randRed: Float = Float((arc4random_uniform(255) + 1) / 255)
+            let randGreen = arc4random_uniform(255) + 1
+            let randBlue = arc4random_uniform(255) + 1
+            
+            redSlider.value = randRed
+            greenSlider.value = Float(randGreen)
+            blueSlider.value = Float(randBlue)
+            displayColors()
+
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
