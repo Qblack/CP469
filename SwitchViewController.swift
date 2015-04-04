@@ -21,6 +21,7 @@ import QuartzCore
 
 class SwitchViewController: UIViewController {
     
+    //GUI variables
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var nodeId: UILabel!
     @IBOutlet weak var moduleId: UILabel!
@@ -31,6 +32,7 @@ class SwitchViewController: UIViewController {
     @IBOutlet weak var offLabel: UILabel!
     @IBOutlet weak var onLabel: UILabel!
     
+    //variables
     let updateUrl = "http://192.168.0.100:5000/updateControl"
     var moduleInfo = ModuleInfo()
     var pageTitle = ""
@@ -41,6 +43,7 @@ class SwitchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //create gradient background colour
         //gradients: http://www.reddit.com/r/swift/comments/27mrlx/gradient_background_of_uiview_in_swift/
         let gradient : CAGradientLayer = CAGradientLayer()
         gradient.frame = view.bounds
@@ -50,6 +53,7 @@ class SwitchViewController: UIViewController {
         gradient.colors = arrayColors
         view.layer.insertSublayer(gradient, atIndex: 0)
         
+        //set all the label text values from the module info
         header.title = moduleInfo.name
         nodeId.text = moduleInfo.Id
         moduleId.text = moduleInfo.moduleId
@@ -57,6 +61,7 @@ class SwitchViewController: UIViewController {
         descLabel.numberOfLines = 0
         descLabel.text = moduleInfo.description
         
+        //create borders for the on/off buttons
         onLabel.layer.borderColor = UIColor.whiteColor().CGColor
         offLabel.layer.borderColor = UIColor.whiteColor().CGColor
         
@@ -80,23 +85,41 @@ class SwitchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    /*
+    *  This method executes when the off button is pressed
+    */
     @IBAction func toggleOff(sender: UIButton) {
+        //show/hide button borders
         onLabel.layer.borderWidth = 0
         offLabel.layer.borderWidth = 3.0
         
+        //create dictionary of parameters to pass web service
         var params: Dictionary<String, NSObject> = ["moduleID":moduleInfo.moduleId, "commands":[16], "values":[0]]
+        
+        //call web service to update the module
         updateControl(params)
     }
 
+    /*
+    *  This method executes when the on button is pressed
+    */
     @IBAction func toggleOn(sender: UIButton) {
+        //show/hide button borders
         onLabel.layer.borderWidth = 3.0
         offLabel.layer.borderWidth = 0
         
+        //create dictionary of parameters to pass web service
         var params: Dictionary<String, NSObject> = ["moduleID":moduleInfo.moduleId, "commands":[16], "values":[1]]
+        
+        //call web service to update the module
         updateControl(params)
     }
     
+    /*
+    *  This method executes when the help (?) button is pressed
+    */
     @IBAction func helpClicked(sender: UIButton) {
+        //toggle the boolean value
         helpVisible = !helpVisible
         
         //show or hide the help dialog
@@ -118,16 +141,23 @@ class SwitchViewController: UIViewController {
         }
     }
     
+    /*
+    *  This method makes a POST request to the webservice to set the
+    *  main light on or off.
+    */
     func updateControl(params : Dictionary<String, NSObject>) {
+        //create http request with POST
         var req = NSMutableURLRequest(URL: NSURL(string: updateUrl)!)
         var session = NSURLSession.sharedSession()
         req.HTTPMethod = "POST"
         
+        //create the request body and headers
         var err: NSError?
         req.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
         req.addValue("application/json", forHTTPHeaderField: "Content-Type")
         req.addValue("application/json", forHTTPHeaderField: "Accept")
         
+        //execute the request
         var task = session.dataTaskWithRequest(req, completionHandler: {data, response, error -> Void in
             //print that we toggled the light
             //we only ever get back 1, so there's nothing we can do or know

@@ -20,6 +20,7 @@ import UIKit
 
 class RootTableViewController: UITableViewController, UITableViewDelegate {
     
+    //variables
     var levelCount = 0
     let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
 
@@ -32,6 +33,7 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         //initialize DAL
         var dal = DataAccessLayer()
         
+        //create gradient background
         //gradients: http://www.reddit.com/r/swift/comments/27mrlx/gradient_background_of_uiview_in_swift/
         let gradient : CAGradientLayer = CAGradientLayer()
         gradient.frame = view.bounds
@@ -41,20 +43,14 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         gradient.colors = arrayColors
         view.layer.insertSublayer(gradient, atIndex: 0)
         
+        //create loader animation for when retrieving data from service
         activityIndicator.frame = self.view.bounds
         activityIndicator.autoresizingMask = .FlexibleWidth | .FlexibleHeight
         activityIndicator.startAnimating()
         self.view.addSubview( activityIndicator )
         
+        //get modules from webservice
         self.getDataFromService("getModuleList", param: "")
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,12 +71,15 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         // Return the number of rows in the section.
         return Storage.modules.count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        //create new cell
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        
+        //get the module for this row
         var module = Storage.modules[indexPath.row]
         
+        //create nice font text for the cell
         let text = module.name
         let font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         let textColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
@@ -91,14 +90,16 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         ]
         let attributedString = NSAttributedString(string: text, attributes: attributes)
         
+        //set the cell to have transparent background and fancy text
         cell.backgroundColor = UIColor.clearColor()
         cell.textLabel?.attributedText = attributedString
-        
-        //cell.textLabel?.text = module.name
         
         return cell
     }
     
+    /*
+    *  This method is used for manual segue control
+    */
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let moduleInfo = Storage.modulesInfo[indexPath.row]
@@ -125,43 +126,10 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
             var dumb = 1
         }
     }
-    
 
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
+    *  This method gets the environment data from the webservice
     */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-    
     func getDataFromService(method: String, param: String) {
         
         //create url path to get APIs
@@ -174,9 +142,12 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         
         println(urlPath)
         
+        //create http request
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
         session.configuration.timeoutIntervalForRequest = 30
+        
+        //execute task
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             
             //check for errors
@@ -184,6 +155,7 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
                 println(error)
                 //call main thread to do loady stuff
                 dispatch_async(dispatch_get_main_queue(), {
+                    //display an alert with the error details
                     let alert = UIAlertController(title: "Error", message:
                         error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
@@ -197,22 +169,28 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
             let json = JSON(data:data)
             switch method {
             case "getModuleList":
+                //parse the module list
                 DataAccessLayer.parseModuleList(json)
+                
+                //for each module, call webservice to get it's information
                 for mod in 0...Storage.modules.count - 1 {
                     self.levelCount++
                     let modId = Storage.modules[mod].moduleId
                     self.getDataFromService("getModuleInfo", param: modId)
                 }
             case "getModuleInfo":
+                //parse the module info
                 self.levelCount--
                 DataAccessLayer.parseModuleInfo(json)
             default:
                 var dumb = 1
             }
             
+            //this is for recursion control
             if (self.levelCount == 0) {
                 //call main thread to do loady stuff
                 dispatch_async(dispatch_get_main_queue(), {
+                    //stop loader animation and reload the table data
                     self.activityIndicator.stopAnimating()
                     self.tableView.reloadData()
                 })

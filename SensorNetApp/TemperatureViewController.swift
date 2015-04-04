@@ -19,6 +19,7 @@ import UIKit
 
 class TemperatureViewController: UIViewController {
 
+    //GUI variables
     @IBOutlet weak var nodeIdLabel: UILabel!
     @IBOutlet weak var moduleIdLabel: UILabel!
     @IBOutlet weak var sensorsLabel: UILabel!
@@ -30,6 +31,7 @@ class TemperatureViewController: UIViewController {
     @IBOutlet weak var header: UINavigationItem!
     @IBOutlet weak var refreshButton: UIButton!
     
+    //variables
     var helpVisible = false
     var auto = false
     var timer: NSTimer!
@@ -41,6 +43,7 @@ class TemperatureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //create gradient background
         //gradients: http://www.reddit.com/r/swift/comments/27mrlx/gradient_background_of_uiview_in_swift/
         let gradient : CAGradientLayer = CAGradientLayer()
         gradient.frame = view.bounds
@@ -50,6 +53,7 @@ class TemperatureViewController: UIViewController {
         gradient.colors = arrayColors
         view.layer.insertSublayer(gradient, atIndex: 0)
         
+        //set all the label texts from the module info
         header.title = moduleInfo.name
         nodeIdLabel.text = moduleInfo.Id
         moduleIdLabel.text = moduleInfo.moduleId
@@ -59,7 +63,7 @@ class TemperatureViewController: UIViewController {
         temperatureLabel.text = moduleInfo.values[1]
         humidityLabel.text = moduleInfo.values[0]
         
-        //setup the loader
+        //setup the loader animation
         loader.animationImages = [UIImage]()
         for var i = 1; i <= 8; i++ {
             var image = String(i)
@@ -86,30 +90,12 @@ class TemperatureViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func helpClicked(sender: UIButton) {
-        helpVisible = !helpVisible
-        
-        //show or hide the help dialog
-        if (helpVisible) {
-            UIView.animateWithDuration(2, animations: {
-                self.help.frame.size = CGSizeMake(self.view.bounds.width - 40, self.view.bounds.height - 120)
-            })
-            UIView.animateWithDuration(1, delay: 1, options: nil, animations: {
-                self.helpDesc.alpha = 1
-                }, completion: nil)
-        }
-        else {
-            UIView.animateWithDuration(2, animations: {
-                self.help.frame.size = CGSizeMake(self.view.bounds.width - 40, 0)
-            })
-            UIView.animateWithDuration(1, animations: {
-                self.helpDesc.alpha = 0
-            })
-        }
-    }
 
+    /*
+    *  This method executes when the refresh button is pressed
+    */
     @IBAction func refreshClicked(sender: UIButton) {
+        //hide the refresh button and show the loader
         refreshIcon.hidden = true
         loader.startAnimating()
         loader.hidden = false
@@ -117,18 +103,25 @@ class TemperatureViewController: UIViewController {
         //create notification to check temp later
         sendNotification()
         
+        //call webservuce for data
         self.getDataFromService()
     }
     
+    /*
+    *  This method executes when the auto update switch is toggled
+    */
     @IBAction func autoSwitched(sender: UISwitch) {
         if (sender.on) {
+            //hide the manual refresh button
             auto = true
             refreshIcon.hidden = true
             refreshButton.enabled = false
         
-            timer = NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: Selector("getDataFromService"), userInfo: nil, repeats: true)
+            //start timer that will update the data every 10 seconds
+            timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("getDataFromService"), userInfo: nil, repeats: true)
         }
         else {
+            //show the refresh button and stop the timer
             auto = false
             refreshIcon.hidden = false
             refreshButton.enabled = true
@@ -136,8 +129,9 @@ class TemperatureViewController: UIViewController {
         }
     }
     
-    ///////////////////////////////////////////////////////////
-    
+    /*
+    *  This method gets the environment data from the webservice
+    */
     func getDataFromService() {
         
         //create url path to get APIs
@@ -145,9 +139,12 @@ class TemperatureViewController: UIViewController {
         
         println(urlPath)
         
+        //create request for webservice
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
         session.configuration.timeoutIntervalForRequest = 30
+        
+        //execute the task
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             
             //check for errors
@@ -165,6 +162,7 @@ class TemperatureViewController: UIViewController {
                     self.temperatureLabel.text = "-"
                     self.humidityLabel.text = "-"
                     
+                    //show an alert with the error details
                     let alert = UIAlertController(title: "Error", message:
                         error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
@@ -190,6 +188,7 @@ class TemperatureViewController: UIViewController {
                 for i in 0...Storage.modulesInfo.count - 1 {
                     var mod = Storage.modulesInfo[i]
                     if mod.moduleId == self.moduleInfo.moduleId {
+                        //show the updated temp and humidity
                         self.temperatureLabel.text = mod.values[1]
                         self.humidityLabel.text = mod.values[0]
                     }
@@ -198,7 +197,32 @@ class TemperatureViewController: UIViewController {
         })
         task.resume()
     }
-    ////////////////////////////////////////////////////////////
+    
+    /*
+    *  This method executes when the help (?) button is pressed
+    */
+    @IBAction func helpClicked(sender: UIButton) {
+        //toggle the boolean value
+        helpVisible = !helpVisible
+        
+        //show or hide the help dialog
+        if (helpVisible) {
+            UIView.animateWithDuration(2, animations: {
+                self.help.frame.size = CGSizeMake(self.view.bounds.width - 40, self.view.bounds.height - 120)
+            })
+            UIView.animateWithDuration(1, delay: 1, options: nil, animations: {
+                self.helpDesc.alpha = 1
+                }, completion: nil)
+        }
+        else {
+            UIView.animateWithDuration(2, animations: {
+                self.help.frame.size = CGSizeMake(self.view.bounds.width - 40, 0)
+            })
+            UIView.animateWithDuration(1, animations: {
+                self.helpDesc.alpha = 0
+            })
+        }
+    }
     
     //setup a notification to check temp again after 10 minutes
     //http://www.ioscreator.com/tutorials/local-notification-tutorial-ios8-swift
