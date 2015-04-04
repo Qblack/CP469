@@ -6,8 +6,18 @@
 //  Copyright (c) 2015 Quinton and Brian. All rights reserved.
 //
 
+/* Title:       SwitchViewController.swift
+ * Date:        March 28, 2015
+ * Author:      Brian Sage and Quinton Black
+ * Description: This is the view controller file for the main light switch.
+ *              It contains all the methods necessary to control the UI and interact
+ *              with the user. It also contains the method that will go out and get
+ *              the specific module information we're interested in.
+ */
+
 import UIKit
 import Foundation
+import QuartzCore
 
 class SwitchViewController: UIViewController {
     
@@ -24,10 +34,23 @@ class SwitchViewController: UIViewController {
     let updateUrl = "http://192.168.0.100:5000/updateControl"
     var moduleInfo = ModuleInfo()
     var pageTitle = ""
+    var helpVisible = false
+    var help: UIView!
+    var helpDesc: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        header.title = pageTitle
+        
+        //gradients: http://www.reddit.com/r/swift/comments/27mrlx/gradient_background_of_uiview_in_swift/
+        let gradient : CAGradientLayer = CAGradientLayer()
+        gradient.frame = view.bounds
+        let cor1 = UIColor(white: 0.1, alpha: 0.98).CGColor
+        let cor2 = UIColor(white: 0.5, alpha: 0.98).CGColor
+        let arrayColors = [cor1, cor2]        
+        gradient.colors = arrayColors
+        view.layer.insertSublayer(gradient, atIndex: 0)
+        
+        header.title = moduleInfo.name
         nodeId.text = moduleInfo.Id
         moduleId.text = moduleInfo.moduleId
         sensors.text = ModuleStatus(rawValue: moduleInfo.nodeStatus.toInt()!)?.toString
@@ -36,6 +59,20 @@ class SwitchViewController: UIViewController {
         
         onLabel.layer.borderColor = UIColor.whiteColor().CGColor
         offLabel.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        //create help dialog
+        help = UIView(frame: CGRectMake(20, 100, self.view.bounds.width - 40, 0))
+        help.backgroundColor = UIColor(white: 0.5, alpha: 0.98)
+        self.view.addSubview(help)
+        
+        helpDesc = UILabel(frame: CGRectMake(15, 10, help.bounds.width - 15, self.view.bounds.height * 0.5))
+        helpDesc.textAlignment = NSTextAlignment.Left
+        helpDesc.numberOfLines = 0
+        helpDesc.textColor = UIColor.whiteColor()
+        helpDesc.font = UIFont(name: "System", size: CGFloat(22))
+        helpDesc.text = "Main Light\n\n\nThis allows you to toggle the main light on and off.\n\nJust remember, with great power comes great responsibility."
+        help.addSubview(helpDesc)
+        helpDesc.alpha = 0
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,6 +94,28 @@ class SwitchViewController: UIViewController {
         
         var params: Dictionary<String, NSObject> = ["moduleID":moduleInfo.moduleId, "commands":[16], "values":[1]]
         updateControl(params)
+    }
+    
+    @IBAction func helpClicked(sender: UIButton) {
+        helpVisible = !helpVisible
+        
+        //show or hide the help dialog
+        if (helpVisible) {
+            UIView.animateWithDuration(2, animations: {
+                self.help.frame.size = CGSizeMake(self.view.bounds.width - 40, self.view.bounds.height - 120)
+            })
+            UIView.animateWithDuration(1, delay: 1, options: nil, animations: {
+                self.helpDesc.alpha = 1
+                }, completion: nil)
+        }
+        else {
+            UIView.animateWithDuration(2, animations: {
+                self.help.frame.size = CGSizeMake(self.view.bounds.width - 40, 0)
+            })
+            UIView.animateWithDuration(1, animations: {
+                self.helpDesc.alpha = 0
+            })
+        }
     }
     
     func updateControl(params : Dictionary<String, NSObject>) {
