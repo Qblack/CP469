@@ -19,6 +19,7 @@ class RGBViewController: UIViewController {
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     @IBOutlet weak var colorShow: UILabel!
+    @IBOutlet weak var shakeUI: UIView!
     
     let updateUrlFast = "http://192.168.0.100:5000/updateControlFast"
     var moduleInfo = ModuleInfo()
@@ -30,16 +31,35 @@ class RGBViewController: UIViewController {
     
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
         if motion == .MotionShake {
-            //FIXlet randRed: Float = Float((arc4random_uniform(255) + 1) / 255)
-            let randGreen = arc4random_uniform(255) + 1
-            let randBlue = arc4random_uniform(255) + 1
-            
-            redSlider.value = randRed
-            greenSlider.value = Float(randGreen)
-            blueSlider.value = Float(randBlue)
-            displayColors()
-
+            shakeUI.alpha = 0.95
+            var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("hideOverlay"), userInfo: nil, repeats: false)
         }
+    }
+    
+    func hideOverlay() {
+        //  PopUpView.hidden = true
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            self.shakeUI.alpha = 0.0
+            }, completion: {finished in
+                self.createRandomColor()})
+    }
+    
+    func createRandomColor() {
+        //create random colour on shake gesture
+        let randRed = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+        let randGreen = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+        let randBlue = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+        
+        redSlider.value = Float(randRed)
+        greenSlider.value = Float(randGreen)
+        blueSlider.value = Float(randBlue)
+        displayColors()
+        
+        let red = CGFloat(redSlider.value)
+        let blue = CGFloat(blueSlider.value)
+        let green = CGFloat(greenSlider.value)
+        
+        requestUpdateLight(red, green: green, blue: blue)
     }
 
     override func viewDidLoad() {
@@ -53,6 +73,8 @@ class RGBViewController: UIViewController {
         
         let color = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
         colorShow.backgroundColor = color
+
+        shakeUI.alpha = 0
     }
 
     override func didReceiveMemoryWarning() {
