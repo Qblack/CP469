@@ -31,6 +31,9 @@ class SwitchViewController: UIViewController {
     @IBOutlet weak var header: UINavigationItem!
     @IBOutlet weak var offLabel: UILabel!
     @IBOutlet weak var onLabel: UILabel!
+    @IBOutlet weak var shakeUI: UIView!
+    @IBOutlet weak var onButton: UIButton!
+    @IBOutlet weak var offButton: UIButton!
     
     //variables
     let updateUrl = "http://192.168.0.100:5000/updateControl"
@@ -39,6 +42,7 @@ class SwitchViewController: UIViewController {
     var helpVisible = false
     var help: UIView!
     var helpDesc: UILabel!
+    var toggleOn = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +69,9 @@ class SwitchViewController: UIViewController {
         onLabel.layer.borderColor = UIColor.whiteColor().CGColor
         offLabel.layer.borderColor = UIColor.whiteColor().CGColor
         
+        //make the shake overlay invisible
+        shakeUI.alpha = 0
+        
         //create help dialog
         help = UIView(frame: CGRectMake(20, 100, self.view.bounds.width - 40, 0))
         help.backgroundColor = UIColor(white: 0.5, alpha: 0.98)
@@ -84,11 +91,45 @@ class SwitchViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    /*
+    *  This method executes when a shake gesture is recognized.
+    */
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+        if (!helpVisible) {
+            if motion == .MotionShake {
+                //show the shake overlay
+                shakeUI.alpha = 0.95
+                
+                //schedule a task to make it fade after 1 second
+                var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("hideOverlay"), userInfo: nil, repeats: false)
+                
+                if (toggleOn) {
+                    offButton.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+                }
+                else {
+                    onButton.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+                }
+            }
+        }
+    }
+    
+    /*
+    *  This method makes the shake overlay fade away
+    */
+    func hideOverlay() {
+        //animate the fading of the shake overlay
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            self.shakeUI.alpha = 0.0
+            }, completion: nil)
+    }
 
     /*
     *  This method executes when the off button is pressed
     */
     @IBAction func toggleOff(sender: UIButton) {
+        toggleOn = false
+        
         //show/hide button borders
         onLabel.layer.borderWidth = 0
         offLabel.layer.borderWidth = 3.0
@@ -104,6 +145,8 @@ class SwitchViewController: UIViewController {
     *  This method executes when the on button is pressed
     */
     @IBAction func toggleOn(sender: UIButton) {
+        toggleOn = true
+        
         //show/hide button borders
         onLabel.layer.borderWidth = 3.0
         offLabel.layer.borderWidth = 0
