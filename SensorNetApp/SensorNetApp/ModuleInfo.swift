@@ -1,10 +1,17 @@
 //
 //  ModuleInfo.swift
-//  Final
+//  SensorNetApp
 //
 //  Created by Brian Sage on 2015-03-28.
-//  Copyright (c) 2015 Brian Sage. All rights reserved.
+//  Copyright (c) 2015 Quinton and Brian. All rights reserved.
 //
+
+/* Title:       ModuleInfo.swift
+ * Date:        March 28, 2015
+ * Author:      Brian Sage and Quinton Black
+ * Description: This file is a container class to store all of the information
+ *              about an individual module in the system.
+ */
 
 import Foundation
 

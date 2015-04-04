@@ -6,6 +6,16 @@
 //  Copyright (c) 2015 Quinton and Brian. All rights reserved.
 //
 
+/* Title:       RootTableViewController.swift
+ * Date:        March 28, 2015
+ * Author:      Brian Sage and Quinton Black
+ * Description: This is the view controller for the main table view screen.
+ *              It goes out and gets a list of modules and their information,
+ *              stores it in the storage class, and displays each module available
+ *              in the table view. When you select a module, you will be segued to 
+ *              that module's screen.
+ */
+
 import UIKit
 
 class RootTableViewController: UITableViewController, UITableViewDelegate {
@@ -21,6 +31,15 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         
         //initialize DAL
         var dal = DataAccessLayer()
+        
+        //gradients: http://www.reddit.com/r/swift/comments/27mrlx/gradient_background_of_uiview_in_swift/
+        let gradient : CAGradientLayer = CAGradientLayer()
+        gradient.frame = view.bounds
+        let cor1 = UIColor(white: 0.1, alpha: 0.98).CGColor
+        let cor2 = UIColor(white: 0.5, alpha: 0.98).CGColor
+        let arrayColors = [cor1, cor2]
+        gradient.colors = arrayColors
+        view.layer.insertSublayer(gradient, atIndex: 0)
         
         activityIndicator.frame = self.view.bounds
         activityIndicator.autoresizingMask = .FlexibleWidth | .FlexibleHeight
@@ -72,6 +91,7 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         ]
         let attributedString = NSAttributedString(string: text, attributes: attributes)
         
+        cell.backgroundColor = UIColor.clearColor()
         cell.textLabel?.attributedText = attributedString
         
         //cell.textLabel?.text = module.name
