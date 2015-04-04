@@ -29,6 +29,21 @@ class RGBViewController: UIViewController {
         return true
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        header.title = pageTitle
+        nodeIdLabel.text = moduleInfo.Id
+        moduleIdLabel.text = moduleInfo.moduleId
+        sensorsLabel.text = ModuleStatus(rawValue: moduleInfo.nodeStatus.toInt()!)?.toString
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.text = moduleInfo.description
+        
+        let color = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
+        colorShow.backgroundColor = color
+        
+        shakeUI.alpha = 0
+    }
+    
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
         if motion == .MotionShake {
             shakeUI.alpha = 0.95
@@ -60,21 +75,6 @@ class RGBViewController: UIViewController {
         let green = CGFloat(greenSlider.value)
         
         requestUpdateLight(red, green: green, blue: blue)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        header.title = pageTitle
-        nodeIdLabel.text = moduleInfo.Id
-        moduleIdLabel.text = moduleInfo.moduleId
-        sensorsLabel.text = moduleInfo.nodeStatus
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.text = moduleInfo.description
-        
-        let color = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
-        colorShow.backgroundColor = color
-
-        shakeUI.alpha = 0
     }
 
     override func didReceiveMemoryWarning() {

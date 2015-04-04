@@ -9,6 +9,9 @@
 import UIKit
 
 class RootTableViewController: UITableViewController, UITableViewDelegate {
+    
+    var levelCount = 0
+    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +21,11 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         
         //initialize DAL
         var dal = DataAccessLayer()
+        
+        activityIndicator.frame = self.view.bounds
+        activityIndicator.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+        activityIndicator.startAnimating()
+        self.view.addSubview( activityIndicator )
         
         self.getDataFromService("getModuleList", param: "")
 
@@ -171,31 +179,24 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
             case "getModuleList":
                 DataAccessLayer.parseModuleList(json)
                 for mod in 0...Storage.modules.count - 1 {
+                    self.levelCount++
                     let modId = Storage.modules[mod].moduleId
                     self.getDataFromService("getModuleInfo", param: modId)
                 }
             case "getModuleInfo":
+                self.levelCount--
                 DataAccessLayer.parseModuleInfo(json)
-                return
             default:
                 var dumb = 1
             }
             
-            //this is so you can see the loady. Otherwise too fast
-            
-            //call main thread to do loady stuff
-            dispatch_async(dispatch_get_main_queue(), {
-              
-                //DELETE ME LATER
-//                let alert = UIAlertController(title: "Alert", message:
-//                    "Successfully retrieved data.", preferredStyle: UIAlertControllerStyle.Alert)
-//                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
-//
-//
-//                self.presentViewController(alert, animated: true, completion: nil)
-                self.tableView.reloadData()
-
-            })
+            if (self.levelCount == 0) {
+                //call main thread to do loady stuff
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.activityIndicator.stopAnimating()
+                    self.tableView.reloadData()
+                })
+            }
         })
         task.resume()
     }
