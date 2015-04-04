@@ -187,12 +187,12 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
             dispatch_async(dispatch_get_main_queue(), {
               
                 //DELETE ME LATER
-                let alert = UIAlertController(title: "Alert", message:
-                    "Successfully retrieved data.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
-
-
-                self.presentViewController(alert, animated: true, completion: nil)
+//                let alert = UIAlertController(title: "Alert", message:
+//                    "Successfully retrieved data.", preferredStyle: UIAlertControllerStyle.Alert)
+//                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
+//
+//
+//                self.presentViewController(alert, animated: true, completion: nil)
                 self.tableView.reloadData()
 
             })
