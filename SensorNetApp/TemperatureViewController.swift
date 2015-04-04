@@ -19,16 +19,21 @@ class TemperatureViewController: UIViewController {
     @IBOutlet weak var loader: UIImageView!
     @IBOutlet weak var refreshIcon: UIImageView!
     @IBOutlet weak var header: UINavigationItem!
+    @IBOutlet weak var refreshButton: UIButton!
     
+    var helpVisible = false
+    var auto = false
+    var timer: NSTimer!
     var moduleInfo = ModuleInfo()
     var pageTitle = ""
+    var help: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         header.title = pageTitle
         nodeIdLabel.text = moduleInfo.Id
         moduleIdLabel.text = moduleInfo.moduleId
-        sensorsLabel.text = moduleInfo.nodeStatus
+        sensorsLabel.text = ModuleStatus(rawValue: moduleInfo.nodeStatus.toInt()!)?.toString
         descLabel.numberOfLines = 0
         descLabel.text = moduleInfo.description
         temperatureLabel.text = moduleInfo.values[1]
@@ -41,6 +46,19 @@ class TemperatureViewController: UIViewController {
             loader.animationImages?.append(UIImage(named: image)!)
         }
         loader.animationDuration = 1
+        
+        //create help dialog
+        help = UIView(frame: CGRectMake(20, 100, self.view.bounds.width - 40, 0))
+        help.backgroundColor = UIColor(white: 0.5, alpha: 0.95)
+        self.view.addSubview(help)
+        
+        let helpDesc = UILabel(frame: CGRectMake(15, 10, help.bounds.width - 15, self.view.bounds.height - 130))
+        helpDesc.textAlignment = NSTextAlignment.Left
+        helpDesc.numberOfLines = 0
+        helpDesc.textColor = UIColor.whiteColor()
+        helpDesc.font = UIFont(name: "System", size: CGFloat(22))
+//        helpDesc.text = "This screen displays details about the temperature and humidity in the room that the sensor exists.  By default you have to manually refresh the screen to update the data.  You have the option to enable auto-updating by toggling the switch."
+        help.addSubview(helpDesc)
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,13 +66,47 @@ class TemperatureViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func helpClicked(sender: UIButton) {
+        helpVisible = !helpVisible
+        
+        //show or hide the help dialog
+        if (helpVisible) {
+            UIView.animateWithDuration(2, animations: {
+                self.help.frame.size = CGSizeMake(self.view.bounds.width - 40, self.view.bounds.height - 120)
+            })
+        }
+        else {
+            UIView.animateWithDuration(2, animations: {
+                self.help.frame.size = CGSizeMake(self.view.bounds.width - 40, 0)
+            })
+        }
+    }
 
     @IBAction func refreshClicked(sender: UIButton) {
         refreshIcon.hidden = true
         loader.startAnimating()
         loader.hidden = false
         
+        //create notification to check temp later
+        sendNotification()
+        
         self.getDataFromService()
+    }
+    
+    @IBAction func autoSwitched(sender: UISwitch) {
+        if (sender.on) {
+            auto = true
+            refreshIcon.hidden = true
+            refreshButton.enabled = false
+        
+            timer = NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: Selector("getDataFromService"), userInfo: nil, repeats: true)
+        }
+        else {
+            auto = false
+            refreshIcon.hidden = false
+            refreshButton.enabled = true
+            timer.invalidate()
+        }
     }
     
     ///////////////////////////////////////////////////////////
@@ -76,7 +128,9 @@ class TemperatureViewController: UIViewController {
                 println(error)
                 //call main thread to do loady stuff
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.refreshIcon.hidden = false
+                    if (!self.auto) {
+                        self.refreshIcon.hidden = false
+                    }
                     self.loader.stopAnimating()
                     self.loader.hidden = true
                     
@@ -99,7 +153,9 @@ class TemperatureViewController: UIViewController {
             
             //call main thread to do loady stuff
             dispatch_async(dispatch_get_main_queue(), {
-                self.refreshIcon.hidden = false
+                if (!self.auto) {
+                    self.refreshIcon.hidden = false
+                }
                 self.loader.stopAnimating()
                 self.loader.hidden = true
                 
@@ -111,18 +167,23 @@ class TemperatureViewController: UIViewController {
                         self.humidityLabel.text = mod.values[0]
                     }
                 }
-                
-                //DELETE ME LATER
-                let alert = UIAlertController(title: "Alert", message:
-                    "Successfully retrieved data.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
-                
-                self.presentViewController(alert, animated: true, completion: nil)
             })
         })
         task.resume()
     }
     ////////////////////////////////////////////////////////////
+    
+    //setup a notification to check temp again after 10 minutes
+    //http://www.ioscreator.com/tutorials/local-notification-tutorial-ios8-swift
+    func sendNotification() {
+        var localNotification = UILocalNotification()
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 20)//600)
+        localNotification.alertBody = "Check the temperature."
+        localNotification.timeZone = NSTimeZone.defaultTimeZone()
+        localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
     
     /*
     // MARK: - Navigation

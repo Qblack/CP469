@@ -30,7 +30,7 @@ class SwitchViewController: UIViewController {
         header.title = pageTitle
         nodeId.text = moduleInfo.Id
         moduleId.text = moduleInfo.moduleId
-        sensors.text = moduleInfo.nodeStatus
+        sensors.text = ModuleStatus(rawValue: moduleInfo.nodeStatus.toInt()!)?.toString
         descLabel.numberOfLines = 0
         descLabel.text = moduleInfo.description
         
