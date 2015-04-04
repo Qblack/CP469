@@ -30,15 +30,32 @@ class TemperatureViewController: UIViewController {
     @IBOutlet weak var refreshIcon: UIImageView!
     @IBOutlet weak var header: UINavigationItem!
     @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var refreshCountdown: UILabel!
+    @IBOutlet weak var shakeUI: UIView!
     
     //variables
     var helpVisible = false
     var auto = false
     var timer: NSTimer!
+    var subTimer: NSTimer!
     var moduleInfo = ModuleInfo()
     var pageTitle = ""
     var help: UIView!
     var helpDesc: UILabel!
+    var count = 10
+    var hasSetupNotification = false
+    
+    override func viewWillDisappear(animated: Bool) {
+        timer?.invalidate()
+        subTimer?.invalidate()
+    }
+    
+    /*
+    *  This method allows for the shake gesture to be used
+    */
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +88,9 @@ class TemperatureViewController: UIViewController {
         }
         loader.animationDuration = 1
         
+        //make the shake overlay invisible
+        shakeUI.alpha = 0
+        
         //create help dialog
         help = UIView(frame: CGRectMake(20, 100, self.view.bounds.width - 40, 0))
         help.backgroundColor = UIColor(white: 0.5, alpha: 0.98)
@@ -90,6 +110,45 @@ class TemperatureViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    /*
+    *  This method executes when a shake gesture is recognized.
+    */
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+        if (!auto && !helpVisible) {
+            if motion == .MotionShake {
+                //show the shake overlay
+                shakeUI.alpha = 0.95
+                
+                //schedule a task to make it fade after 1 second
+                var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("hideOverlay"), userInfo: nil, repeats: false)
+                
+                //hide the refresh button and show the loader
+                refreshIcon.hidden = true
+                loader.startAnimating()
+                loader.hidden = false
+                
+                //create notification to check temp later
+                if (!hasSetupNotification) {
+                    hasSetupNotification = true
+                    sendNotification()
+                }
+                
+                //call webservuce for data
+                self.getDataFromService()
+            }
+        }        
+    }
+    
+    /*
+    *  This method makes the shake overlay fade away
+    */
+    func hideOverlay() {
+        //animate the fading of the shake overlay
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            self.shakeUI.alpha = 0.0
+            }, completion: nil)
+    }
 
     /*
     *  This method executes when the refresh button is pressed
@@ -101,7 +160,10 @@ class TemperatureViewController: UIViewController {
         loader.hidden = false
         
         //create notification to check temp later
-        sendNotification()
+        if (!hasSetupNotification) {
+            hasSetupNotification = true
+            sendNotification()
+        }
         
         //call webservuce for data
         self.getDataFromService()
@@ -116,23 +178,45 @@ class TemperatureViewController: UIViewController {
             auto = true
             refreshIcon.hidden = true
             refreshButton.enabled = false
-        
+            refreshCountdown.hidden = false
+            
             //start timer that will update the data every 10 seconds
             timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("getDataFromService"), userInfo: nil, repeats: true)
+            
+            subTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("timerCount"), userInfo: nil, repeats: true)
         }
         else {
             //show the refresh button and stop the timer
             auto = false
             refreshIcon.hidden = false
             refreshButton.enabled = true
+            refreshCountdown.hidden = true
             timer.invalidate()
+            subTimer.invalidate()
         }
+    }
+    
+    /*
+    *  This method controls the refresh counter value
+    */
+    func timerCount() {
+        if (count >= 0) {
+            count--
+        }
+        refreshCountdown.text = String(count)
     }
     
     /*
     *  This method gets the environment data from the webservice
     */
     func getDataFromService() {
+        //counter stuff
+        if (auto) {
+            count = 10
+            refreshCountdown.text = String(count)
+            subTimer.invalidate()
+            subTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("timerCount"), userInfo: nil, repeats: true)
+        }
         
         //create url path to get APIs
         var urlPath: String = "http://192.168.0.100:5000/getModuleInfo?moduleID=" + moduleInfo.moduleId

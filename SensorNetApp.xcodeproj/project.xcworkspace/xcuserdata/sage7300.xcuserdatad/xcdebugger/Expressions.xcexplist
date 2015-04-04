@@ -47,6 +47,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "SensorNetApp.RGBViewController.motionEnded (SensorNetApp.RGBViewController)(C.UIEventSubtype, withEvent : ObjectiveC.UIEvent) -&gt; ():RGBViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "redSlider.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "SensorNetApp.DataAccessLayer.parseModuleInfo (SensorNetApp.DataAccessLayer)(SensorNetApp.JSON) -&gt; SensorNetApp.ModuleInfo:DataAccessLayer.swift">
          <PersistentStrings>
             <PersistentString
@@ -66,14 +74,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SensorNetApp.RGBViewController.motionEnded (SensorNetApp.RGBViewController)(C.UIEventSubtype, withEvent : ObjectiveC.UIEvent) -&gt; ():RGBViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "redSlider.value">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "SensorNetApp.DataAccessLayer.parseModuleInfo (SensorNetApp.DataAccessLayer)(SensorNetApp.JSON) -&gt; ():DataAccessLayer.swift">
          <PersistentStrings>
             <PersistentString
@@ -85,10 +85,10 @@
          contextName = "SensorNetApp.DataAccessLayer.parseModuleList (SensorNetApp.DataAccessLayer)(SensorNetApp.JSON) -&gt; ():DataAccessLayer.swift">
          <PersistentStrings>
             <PersistentString
-               value = "mod.arrayValue[0].stringValue.toInt()!">
+               value = "mod.arrayValue[0].stringValue">
             </PersistentString>
             <PersistentString
-               value = "mod.arrayValue[0].stringValue">
+               value = "mod.arrayValue[0].stringValue.toInt()!">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -97,6 +97,11 @@
       </ContextState>
       <ContextState
          contextName = "SensorNetApp.SwitchViewController.updateControl (SensorNetApp.SwitchViewController)(Swift.Dictionary&lt;Swift.String, ObjectiveC.NSObject&gt;) -&gt; ():SwitchViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "params[&quot;values&quot;].arrayValue">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>
