@@ -51,7 +51,7 @@ class SwitchViewController: UIViewController {
         //gradients: http://www.reddit.com/r/swift/comments/27mrlx/gradient_background_of_uiview_in_swift/
         let gradient : CAGradientLayer = CAGradientLayer()
         gradient.frame = view.bounds
-        let cor1 = UIColor(white: 0.1, alpha: 0.98).CGColor
+        let cor1 = UIColor(white: 0.2, alpha: 0.98).CGColor
         let cor2 = UIColor(white: 0.5, alpha: 0.98).CGColor
         let arrayColors = [cor1, cor2]        
         gradient.colors = arrayColors
