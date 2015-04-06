@@ -25,6 +25,7 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
         
                
         //initialize storage
