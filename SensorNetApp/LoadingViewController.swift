@@ -17,16 +17,14 @@ class LoadingViewController: UIViewController {
         super.viewDidLoad()
         
         image.animationImages = [UIImage]()
-        image.animationImages?.append(UIImage(named: "led-light")!)
-        image.animationImages?.append(UIImage(named: "led-normal")!)
-        image.animationImages?.append(UIImage(named: "led-dark")!)
-        image.animationImages?.append(UIImage(named: "led-normal")!)
+        for var i = 1; i <= 20; i++ {
+            var img = "l" + String(i)
+            image.animationImages?.append(UIImage(named: img)!)
+        }
         image.animationDuration = 1
         image.startAnimating()
+        
         self.getDataFromService("getModuleList", param: "")
-
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
