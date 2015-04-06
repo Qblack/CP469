@@ -29,6 +29,10 @@ struct DataAccessLayer {
         
     }
     
+    /*
+    Accessing JSON from a file:
+    https://gist.github.com/Tulkas/9f69784b37440c907e96
+    */
     //Gets the module info from a json file for testing purposes
     static func getModuleData(success: ((data: NSData) -> Void)) {
         let filePath = NSBundle.mainBundle().pathForResource("ModInfo",ofType:"json")
