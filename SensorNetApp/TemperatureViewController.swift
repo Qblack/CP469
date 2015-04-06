@@ -311,9 +311,18 @@ class TemperatureViewController: UIViewController {
     //setup a notification to check temp again after 10 minutes
     //http://www.ioscreator.com/tutorials/local-notification-tutorial-ios8-swift
     func sendNotification() {
+        var module: ModuleInfo!
+        //find environment module
+        for i in 0...Storage.modulesInfo.count - 1 {
+            var mod = Storage.modulesInfo[i]
+            if mod.moduleId == self.moduleInfo.moduleId {
+                module = mod
+            }
+        }
+        
         var localNotification = UILocalNotification()
         localNotification.fireDate = NSDate(timeIntervalSinceNow: 20)//600)
-        localNotification.alertBody = "Check the temperature."
+        localNotification.alertBody = "Current temperature: " + module.values[1]
         localNotification.timeZone = NSTimeZone.defaultTimeZone()
         localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         
