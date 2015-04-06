@@ -27,6 +27,7 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+               
         //initialize storage
         var storage = Storage()
         
