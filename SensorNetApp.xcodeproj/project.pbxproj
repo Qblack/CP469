@@ -118,10 +118,10 @@
 				8A2EEDAB1AC707E300B81F53 /* SwitchViewController.swift */,
 				8AFC53421AC7122000E1F509 /* RGBViewController.swift */,
 				8ADE99811AC759DD00BC7D76 /* TemperatureViewController.swift */,
+				8AE419661AD2CD5300E2B9AB /* LoadingViewController.swift */,
 				8AE7789B1AC9EB2700A2356E /* RootTableViewController.swift */,
 				A5EAB0441AC9F63900BA6DAE /* ModuleTypeEnum.swift */,
 				A5EFD7DC1ACC92E600CEDC44 /* ModuleStatusEnum.swift */,
-				8AE419661AD2CD5300E2B9AB /* LoadingViewController.swift */,
 			);
 			path = SensorNetApp;
 			sourceTree = "<group>";

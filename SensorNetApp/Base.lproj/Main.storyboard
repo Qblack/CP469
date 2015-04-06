@@ -880,6 +880,7 @@
                     <navigationItem key="navigationItem" id="tgS-5P-4iR"/>
                     <connections>
                         <outlet property="image" destination="PKU-zw-cxm" id="9D6-6m-iLs"/>
+                        <segue destination="3oR-zP-hSc" kind="show" identifier="modules" id="JJr-7n-EeO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s30-6h-Xd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
