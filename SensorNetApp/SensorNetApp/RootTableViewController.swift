@@ -38,7 +38,7 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         //gradients: http://www.reddit.com/r/swift/comments/27mrlx/gradient_background_of_uiview_in_swift/
         let gradient : CAGradientLayer = CAGradientLayer()
         gradient.frame = view.bounds
-        let cor1 = UIColor(white: 0.1, alpha: 0.98).CGColor
+        let cor1 = UIColor(white: 0.2, alpha: 0.98).CGColor
         let cor2 = UIColor(white: 0.5, alpha: 0.98).CGColor
         let arrayColors = [cor1, cor2]
         gradient.colors = arrayColors
@@ -83,12 +83,11 @@ class RootTableViewController: UITableViewController, UITableViewDelegate {
         
         //create nice font text for the cell
         let text = module.name
-        let font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        let textColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        let font = UIFont.boldSystemFontOfSize(16)
+        let textColor = UIColor.whiteColor()
         let attributes = [
             NSForegroundColorAttributeName : textColor,
-            NSFontAttributeName : font,
-            NSTextEffectAttributeName : NSTextEffectLetterpressStyle
+            NSFontAttributeName : font
         ]
         let attributedString = NSAttributedString(string: text, attributes: attributes)
         
