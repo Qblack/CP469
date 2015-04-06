@@ -14,6 +14,7 @@
 		8A2EEDA21AC6EE4900B81F53 /* SensorNetAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2EEDA11AC6EE4900B81F53 /* SensorNetAppTests.swift */; };
 		8A2EEDAC1AC707E300B81F53 /* SwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2EEDAB1AC707E300B81F53 /* SwitchViewController.swift */; };
 		8ADE99821AC759DD00BC7D76 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADE99811AC759DD00BC7D76 /* TemperatureViewController.swift */; };
+		8AE419671AD2CD5300E2B9AB /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE419661AD2CD5300E2B9AB /* LoadingViewController.swift */; };
 		8AE7789C1AC9EB2700A2356E /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7789B1AC9EB2700A2356E /* RootTableViewController.swift */; };
 		8AFC53431AC7122000E1F509 /* RGBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFC53421AC7122000E1F509 /* RGBViewController.swift */; };
 		A544ECBF1AC705BC0027F68C /* ModuleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544ECBD1AC705BC0027F68C /* ModuleInfo.swift */; };
@@ -49,6 +50,7 @@
 		8A2EEDA11AC6EE4900B81F53 /* SensorNetAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorNetAppTests.swift; sourceTree = "<group>"; };
 		8A2EEDAB1AC707E300B81F53 /* SwitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchViewController.swift; path = ../SwitchViewController.swift; sourceTree = "<group>"; };
 		8ADE99811AC759DD00BC7D76 /* TemperatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
+		8AE419661AD2CD5300E2B9AB /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		8AE7789B1AC9EB2700A2356E /* RootTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
 		8AFC53421AC7122000E1F509 /* RGBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBViewController.swift; sourceTree = "<group>"; };
 		A544ECBD1AC705BC0027F68C /* ModuleInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleInfo.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				8AE7789B1AC9EB2700A2356E /* RootTableViewController.swift */,
 				A5EAB0441AC9F63900BA6DAE /* ModuleTypeEnum.swift */,
 				A5EFD7DC1ACC92E600CEDC44 /* ModuleStatusEnum.swift */,
+				8AE419661AD2CD5300E2B9AB /* LoadingViewController.swift */,
 			);
 			path = SensorNetApp;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				A5EFD7DD1ACC92E600CEDC44 /* ModuleStatusEnum.swift in Sources */,
 				8A2EED8C1AC6EE4900B81F53 /* AppDelegate.swift in Sources */,
 				A5EAB0451AC9F63900BA6DAE /* ModuleTypeEnum.swift in Sources */,
+				8AE419671AD2CD5300E2B9AB /* LoadingViewController.swift in Sources */,
 				8ADE99821AC759DD00BC7D76 /* TemperatureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
